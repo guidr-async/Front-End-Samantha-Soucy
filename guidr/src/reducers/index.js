@@ -11,7 +11,7 @@ import {
     USER_LOGIN_START,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAILURE
-} FROM "../actions"
+} from "../actions"
 
 const initialState = {
     trips: [],
