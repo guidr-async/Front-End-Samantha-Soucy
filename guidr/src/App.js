@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Route} from "react-router"
 import './App.css';
+
+import LoginView from "./views/LoginView"
+import SignUpView from "./views/SignUpView"
+import HomePageView from "./views/HomePageView"
+import PortfolioPageView from "./views/PortfolioPageView"
+import AddInfoView from "./views/AddInfoView"
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Route exact path="/login" component={LoginView} />
+        <Route path="/signUp" component={SignUpView} />
+        <Route path="/homePage" component={HomePageView} />
+        <Route path="/portfolio/:id" component={PortfolioPageView} />
+        <Route path="/addInfo" component={AddInfoView} />
+        
       </div>
     );
   }
