@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 export default function Login(props) {
     return (
         <div>
-            <form onSubmit={ev => props.submitLogin(ev)}>
+            <form onSubmit={ev => props.loginUserTest(ev)} autoComplete="on">
                 <div>
-                    <label>
+                    <div>
                         Username
-                    </label>
+                    </div>
                     <input onChange={ev => props.handleChange(ev)}
                         id="username"
                         type="text"
@@ -17,10 +17,10 @@ export default function Login(props) {
                     />
                 </div>
                 <div>
-                    <label>
+                    <div>
                         Password
-                    </label>
-                    <input onChange={ev => props.handleChange(ev)}
+                    </div>
+                    <input autoComplete="on" onChange={ev => props.handleChange(ev)}
                        id="password"
                        type="password"
                        name="password"

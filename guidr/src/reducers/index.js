@@ -2,12 +2,12 @@ import {
     FETCH_HOMEPAGE_START,
     FETCH_HOMEPAGE_SUCCESS,
     FETCH_HOMEPAGE_FAILURE,
-    FETCH_PORTFOLIO_START,
-    FETCH_PORTFOLIO_SUCCESS,
-    FETCH_PORTFOLIO_FAILURE,
-    ADD_INFO_START,
-    ADD_INFO_SUCCESS,
-    ADD_INFO_FAILURE,
+    FETCH_USERS_START,
+    FETCH_USERS_SUCCESS,
+    FETCH_USERS_FAILURE,
+    ADD_USER_START,
+    ADD_USER_SUCCESS,
+    ADD_USER_FAILURE,
     USER_LOGIN_START,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAILURE
@@ -45,39 +45,39 @@ export default (state = initialState, { type, payload }) => {
                 fetchingInfo: false,
                 error: payload
             };
-        case FETCH_PORTFOLIO_START:
+        case FETCH_USERS_START:
             return {
                 ...state,
                 fetchingUsers: true,
                 error: null
             };
-        case FETCH_PORTFOLIO_SUCCESS:
+        case FETCH_USERS_SUCCESS:
             return {
                 ...state,
                 fetchingInfo: false,
                 guides: payload,
                 error:null
             };
-        case FETCH_PORTFOLIO_FAILURE:
+        case FETCH_USERS_FAILURE:
             return {
                 ...state,
                 fetchingInfo: false,
                 error: payload
             };
-        case ADD_INFO_START:
+        case ADD_USER_START:
             return {
                 ...state,
                 addingInfo: true,
                 error: null
             };
-        case ADD_INFO_SUCCESS:
+        case ADD_USER_SUCCESS:
             return {
                 ...state,
                 guides: payload,
                 addingInfo: false,
                 error: null
             };
-        case ADD_INFO_FAILURE:
+        case ADD_USER_FAILURE:
             return {
                 ...state,
                 error: payload,

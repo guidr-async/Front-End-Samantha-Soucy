@@ -3,11 +3,11 @@ import React from "react";
 export default function SignUp(props) {
     return (
         <div>
-            <form>
+            <form autoComplete="on" onSubmit={(ev) => props.handleChange(ev)}>
                 <h1>Sign Up Form</h1>
                 <div>
                     <div>
-                        <input on onChange={(ev) => props.handleChanges(ev)} 
+                        <input on onChange={(ev) => props.handleChange(ev)} 
                             id="unsername"
                             type="text"
                             name="username"
@@ -15,16 +15,16 @@ export default function SignUp(props) {
                         />
                     </div>
                     <div>
-                        <div>
-                            <input onChange={(ev) => props.handleChanges(ev)}
+                        
+                            <input onChange={(ev) => props.handleChange(ev)}
                                  id="email"
                                  type="email"
                                  name="email"
                                  placeholder="Email" required
                              />
-                        </div>
+                        
                         <div>
-                            <input onChange={(ev) => props.handleChanges(ev)} 
+                            <input onChange={(ev) => props.handleChange(ev)} 
                                 id="password"
                                 type="password"
                                 name="password"
@@ -32,7 +32,7 @@ export default function SignUp(props) {
                             />
                         </div>
                         <div>
-                        <input onChange={(ev) => props.handleChanges(ev)} 
+                        <input onChange={(ev) => props.handleChange(ev)} 
                                 id="password2"
                                 type="password"
                                 name="password2"
@@ -42,7 +42,7 @@ export default function SignUp(props) {
                     </div>
                     <div>
                         <div>
-                        <input onChange={(ev) => props.handleChanges(ev)} 
+                        <input onChange={(ev) => props.handleChange(ev)} 
                                 id="name"
                                 type="text"
                                 name="name"
@@ -50,7 +50,7 @@ export default function SignUp(props) {
                             />
                         </div>
                         <div>
-                        <input onChange={(ev) => props.handleChanges(ev)} 
+                        <input onChange={(ev) => props.handleChange(ev)} 
                                 id="location"
                                 type="text"
                                 name="location"
@@ -58,7 +58,7 @@ export default function SignUp(props) {
                             /> 
                         </div>
                         <div>
-                        <textarea onChange={(ev) => props.handleChanges(ev)} 
+                        <textarea onChange={(ev) => props.handleChange(ev)} 
                                 id="bio"
                                 type="text"
                                 name="bio"
@@ -66,9 +66,8 @@ export default function SignUp(props) {
                             /> 
                         </div>
                         <div>
-                            <label htmlFor="text">
-                                Professional? 
-                                <input onChange={(ev) => props.handleChanges(ev)} 
+                            <label>
+                                Professional? <input onChange={(ev) => props.handleChange(ev)} 
                                 id="professional"
                                 type="checkbox"
                                 name="professional"
@@ -81,7 +80,8 @@ export default function SignUp(props) {
             </form>
 
             <div>
-                <button onClick={ev => props.clearForm(ev)}>Clear</button>
+                <button onClick={ev => props.handleSubmit(ev)} type="submit">Submit</button>
+                <button onClick={ev => props.clearForm(ev)} type="button">Cancel</button>
             </div>
         </div>
     )
