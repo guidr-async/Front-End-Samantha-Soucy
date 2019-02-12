@@ -3,7 +3,7 @@ import React from "react";
 export default function SignUp(props) {
     return (
         <div>
-            <form autoComplete="on" onSubmit={(ev) => props.handleChange(ev)}>
+            <form autoComplete="on" onSubmit={(ev) => props.handleSubmit(ev)}>
                 <h1>Sign Up Form</h1>
                 <div>
                     <div>

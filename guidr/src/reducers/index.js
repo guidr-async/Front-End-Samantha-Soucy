@@ -5,30 +5,49 @@ import {
     FETCH_USERS_START,
     FETCH_USERS_SUCCESS,
     FETCH_USERS_FAILURE,
-    FETCH_USER_START,
-    FETCH_USER_SUCCESS,
-    FETCH_USER_FAILURE,
+    // FETCH_USER_START,
+    // FETCH_USER_SUCCESS,
+    // FETCH_USER_FAILURE,
     ADD_USER_START,
     ADD_USER_SUCCESS,
     ADD_USER_FAILURE,
     USER_LOGIN_START,
     USER_LOGIN_SUCCESS,
-    USER_LOGIN_FAILURE
+    USER_LOGIN_FAILURE,
+    SET_USER,
+    LOGGING_OUT,
+    FETCH_USER_ADVENTURE_START,
+    FETCH_USER_ADVENTURE_SUCCESS,
+    FETCH_USER_ADVENTURE_FAILURE
 } from "../actions"
 
 const initialState = {
     adventures: [],
     users: [],
-    user: "",
+    user: [],
     fetchingInfo: false,
     fetchingUsers: false,
     loggingIn: false,
     loggedIn: false,
+    fetchingAdventures: false,
+    userAdventures: [],
     error: null
 }
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
+        case SET_USER:
+            return {
+                ...state,
+                user: payload,
+                loggedIn: true
+            };
+        case LOGGING_OUT:
+            return {
+                ...state,
+                user: [],
+                loggedIn: false
+            };
         case FETCH_HOMEPAGE_START:
             return {
                 ...state,
@@ -40,7 +59,7 @@ export default (state = initialState, { type, payload }) => {
                 ...state,
                 error: null,
                 fetchingInfo: false,
-                trips: payload
+                adventures: payload
             };
         case FETCH_HOMEPAGE_FAILURE:
             return {
@@ -57,8 +76,8 @@ export default (state = initialState, { type, payload }) => {
         case FETCH_USERS_SUCCESS:
             return {
                 ...state,
-                fetchingInfo: false,
-                guides: payload,
+                fetchingUsers: false,
+                users: payload,
                 error:null
             };
         case FETCH_USERS_FAILURE:
@@ -67,25 +86,25 @@ export default (state = initialState, { type, payload }) => {
                 fetchingInfo: false,
                 error: payload
             };
-        case FETCH_USER_START:
-            return {
-                ...state,
-                fetchSingleUser: true,
-                error: null
-            };
-        case FETCH_USER_SUCCESS:
-            return {
-                ...state,
-                fetchSingleUser: false,
-                user: payload,
-                error:null
-            };
-        case FETCH_USER_FAILURE:
-            return {
-                ...state,
-                fetchSingleUser: false,
-                error: payload
-            };
+        // case FETCH_USER_START:
+        //     return {
+        //         ...state,
+        //         fetchSingleUser: true,
+        //         error: null
+        //     };
+        // case FETCH_USER_SUCCESS:
+        //     return {
+        //         ...state,
+        //         fetchSingleUser: false,
+        //         user: payload,
+        //         error:null
+        //     };
+        // case FETCH_USER_FAILURE:
+        //     return {
+        //         ...state,
+        //         fetchSingleUser: false,
+        //         error: payload
+        //     };
         case ADD_USER_START:
             return {
                 ...state,
@@ -95,15 +114,15 @@ export default (state = initialState, { type, payload }) => {
         case ADD_USER_SUCCESS:
             return {
                 ...state,
-                guides: payload,
-                addingInfo: false,
+                users: payload,
+                addingUser: false,
                 error: null
             };
         case ADD_USER_FAILURE:
             return {
                 ...state,
                 error: payload,
-                addingInfo: false
+                addingUser: false
             };
         case USER_LOGIN_START:
             return {
@@ -118,7 +137,7 @@ export default (state = initialState, { type, payload }) => {
                 error: null,
                 loggedIn: true,
                 loggingIn: false,
-                username: payload
+                user: payload
             };
         case USER_LOGIN_FAILURE:
             return {
@@ -126,6 +145,25 @@ export default (state = initialState, { type, payload }) => {
                 error: payload,
                 loggedIn: false,
                 loggingIn: false
+            };
+        case FETCH_USER_ADVENTURE_START:
+            return {
+                ...state,
+                fetchingAdventures: true,
+                error: null
+            };
+        case FETCH_USER_ADVENTURE_SUCCESS:
+            return {
+                ...state,
+                error: null,
+                fetchingAdventures: false,
+                userAdventures: payload
+            };
+        case FETCH_USER_ADVENTURE_FAILURE:
+            return {
+                ...state,
+                fetchingAdventures: false,
+                error: payload
             };
         default:
             return state

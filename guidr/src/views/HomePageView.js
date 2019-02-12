@@ -1,13 +1,14 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
 import HomePage from "../components/HomePage/HomePage";
-import { getHomePage, getUsers } from "../actions";
+import { getHomePage, getUsers, logOut } from "../actions";
 
 export class HomePageView extends Component {
     componentDidMount() {
         this.props.getHomePage()
     }
     logout = () => {
+        this.props.logOut()
         this.props.history.push("/")
     }
     render() {
@@ -15,7 +16,7 @@ export class HomePageView extends Component {
         return (
             <div>
                 <HomePage
-                    adventures={this.props.users}
+                    adventures={this.props.adventures}
                     users={this.props.users}
                     logout={this.logout}
                     />
@@ -35,7 +36,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     getHomePage,
-    getUsers
+    getUsers,
+    logOut
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageView)

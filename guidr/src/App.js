@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route, Link} from "react-router"
+import {Route} from "react-router"
 import './App.css';
 
 import LoginView from "./views/LoginView"

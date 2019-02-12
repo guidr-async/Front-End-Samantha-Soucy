@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Login from "../components/Login";
-import { userLogin, getUsers, getSingleUser } from "../actions";
+import { userLogin, getUsers, getSingleUser, setUser, getUserAdventure } from "../actions";
 
 export class LoginView extends Component {
     state = {
-        loggingIn: {
+        userLoggingIn: {
             username: "",
             password: ""
         }
     }
+    
     loginUserTest = (ev) => {
-        ev.preventdefault();
-        const trueUser = this.props.users.find(user => user.username === this.state.loggingIn.username);
+        ev.preventDefault();
+        const trueUser = this.props.users.find(user=> user.username === this.state.userLoggingIn.username);
         if (trueUser) {
             this.submitLogin(trueUser)
+            this.props.getUserAdventure(trueUser.id)
         } else {
             alert("sorry, you must register first")
         }
@@ -24,11 +26,11 @@ export class LoginView extends Component {
     }
 
     handleChange = (ev) => {
-        console.log(ev.target.name, ev.target.value)
-        this.setState({loggingIn:{...this.state.loggingIn, [ev.target.name]: ev.target.value}})
+        // console.log(ev.target.name, ev.target.value)
+        this.setState({userLoggingIn:{...this.state.userLoggingIn, [ev.target.name]: ev.target.value}})
     }
     submitLogin = user => {
-        this.props.getSingleUser(user.id)
+        this.props.setUser(user)
         this.props.error ? alert(this.props.error) : this.props.history.push("/homePage");
     }
     render() {
@@ -55,7 +57,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     userLogin,
     getUsers,
-    getSingleUser
+    getSingleUser,
+    setUser,
+    getUserAdventure
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginView)

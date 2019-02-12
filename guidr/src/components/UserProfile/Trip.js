@@ -19,34 +19,35 @@ const showDescription = ev => {
   
 }
   
-export default function Trip() {
+export default function Trip(props) {
+    console.log(props)
     return (
         <div>
-            <button onClick={ev => showDescription(ev)} Location></button>
+            <button onClick={ev => showDescription(ev)}>{props.trip.title}; {props.trip.date}; {props.trip.location}</button>
             <div>
                 <div>
                     <div>
                         <h4>Title: </h4>
-                        <p>Hike</p>
+                        <p>{props.trip.title}</p>
                     </div>
                     <div>
                         <h4>Location: </h4>
-                        <p>Man in the Mountain</p>
+                        <p>{props.trip.location}</p>
                     </div>
                     <div>
                         <h4>Duraction: </h4>
-                        <p> 4 hrs</p>
+                        <p>{props.trip.duration}</p>
                     </div>
                     <div>
                         <h4> Type of Trip: </h4>
-                        <p>Personal Hike</p>
+                        <p>{props.trip.adventure_type}</p>
                     </div>
                     <div>
                         <h4> Professional or Pleasure:</h4>
-                        <p>Pleasure</p>
+                        <p>{props.trip.professional ? "Professional" : "Pleasure"}</p>
                     </div>
                     <div>
-                        <h4> Notes: <span>Rladjbsfkjdfv.kjabdvkjbdkjvdb.kjas.kjbvkjbskjs.panljba.</span></h4>
+                        <h4> Notes: <span>{props.trip.decription}</span></h4>
                     </div>
                 </div>
             </div>
