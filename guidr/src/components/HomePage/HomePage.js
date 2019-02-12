@@ -9,7 +9,7 @@ export default function HomePage(props) {
             <header>
                 <nav>
                     <Link to={"/user/:id"}>Portfolio</Link>
-                    <Link onClick={() => props.logout()} to={"/login"}>Logout</Link>
+                    <Link onClick={() => props.logout()} to={"/"}>Logout</Link>
                 </nav>
             </header>
             <div>
@@ -21,7 +21,7 @@ export default function HomePage(props) {
                 <div>Scuba Diving</div>
             </div>
             <section>
-                {props.adventures.map(item => {return <InfoCard user={props.users.find(user => user.id === item.user_id)} adventure={item} />})}
+                {props.adventures.map(item => {return <InfoCard key={item.id} user={props.users.find(user => user.id === item.user_id)} adventure={item} />})}
             </section>
         </div>
     )

@@ -6,7 +6,7 @@ const AddInfo = props => {
             <form onSubmit={() => console.jog("submitting")}>
                 <h1>Add Information!</h1>
                 <div>
-                    <label>
+                    <label htmlFor="username">
                         Title
                     </label>
                     <input onChange={ev => props.handleChanges(ev)}
@@ -17,7 +17,7 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                    <lable>
+                    <lable htmlFor="username">
                         Date
                     </lable>
                     <input onChange={ev => props.handleChanges(ev)}
@@ -26,7 +26,7 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                    <lable>
+                    <lable htmlFor="username">
                         Location
                     </lable>
                     <input onChange={ev => props.handleChanges(ev)}
@@ -37,7 +37,7 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                    <label>
+                    <label htmlFor="username">
                         Duration
                     </label>
                     <input onChange={ev => props.handleChanges(ev)}
@@ -47,7 +47,7 @@ const AddInfo = props => {
                         placeholder="how long was the Trip?"
                     />
                 </div>
-                <label>
+                <label htmlFor="username">
                     type
                 </label>
                 <div>
@@ -102,7 +102,7 @@ const AddInfo = props => {
                 </div>
                 <div>
                     <div>
-                        <label>
+                        <label htmlFor="username">
                             Professional or Pleasure
                         </label>
                         <div>
@@ -127,7 +127,7 @@ const AddInfo = props => {
                         </div>
                     </div>
                     <div>
-                        <label>
+                        <label htmlFor="username">
                             Drscription/Notes
                         </label>
                         <textarea rows="5" onChange={ev => props.handleChanges(ev)}

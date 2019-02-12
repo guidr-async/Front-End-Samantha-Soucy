@@ -5,6 +5,9 @@ import {
     FETCH_USERS_START,
     FETCH_USERS_SUCCESS,
     FETCH_USERS_FAILURE,
+    FETCH_USER_START,
+    FETCH_USER_SUCCESS,
+    FETCH_USER_FAILURE,
     ADD_USER_START,
     ADD_USER_SUCCESS,
     ADD_USER_FAILURE,
@@ -14,9 +17,9 @@ import {
 } from "../actions"
 
 const initialState = {
-    trips: [],
-    guides: [],
-    username: "",
+    adventures: [],
+    users: [],
+    user: "",
     fetchingInfo: false,
     fetchingUsers: false,
     loggingIn: false,
@@ -62,6 +65,25 @@ export default (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 fetchingInfo: false,
+                error: payload
+            };
+        case FETCH_USER_START:
+            return {
+                ...state,
+                fetchSingleUser: true,
+                error: null
+            };
+        case FETCH_USER_SUCCESS:
+            return {
+                ...state,
+                fetchSingleUser: false,
+                user: payload,
+                error:null
+            };
+        case FETCH_USER_FAILURE:
+            return {
+                ...state,
+                fetchSingleUser: false,
                 error: payload
             };
         case ADD_USER_START:
