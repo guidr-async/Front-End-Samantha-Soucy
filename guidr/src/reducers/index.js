@@ -5,9 +5,6 @@ import {
     FETCH_USERS_START,
     FETCH_USERS_SUCCESS,
     FETCH_USERS_FAILURE,
-    // FETCH_USER_START,
-    // FETCH_USER_SUCCESS,
-    // FETCH_USER_FAILURE,
     ADD_USER_START,
     ADD_USER_SUCCESS,
     ADD_USER_FAILURE,
@@ -86,25 +83,7 @@ export default (state = initialState, { type, payload }) => {
                 fetchingInfo: false,
                 error: payload
             };
-        // case FETCH_USER_START:
-        //     return {
-        //         ...state,
-        //         fetchSingleUser: true,
-        //         error: null
-        //     };
-        // case FETCH_USER_SUCCESS:
-        //     return {
-        //         ...state,
-        //         fetchSingleUser: false,
-        //         user: payload,
-        //         error:null
-        //     };
-        // case FETCH_USER_FAILURE:
-        //     return {
-        //         ...state,
-        //         fetchSingleUser: false,
-        //         error: payload
-        //     };
+        
         case ADD_USER_START:
             return {
                 ...state,

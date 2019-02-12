@@ -1,5 +1,6 @@
 import React from "react";
-import Trip from "./Trip";
+// import Trip from "./Trip";
+
 
 
 export default function InfoList(props) {
@@ -7,8 +8,8 @@ export default function InfoList(props) {
     return (
         <div>
             <h2>{props.user.name}</h2>
-            
-            <Trip />
         </div>
     )
 }
+                        
+         

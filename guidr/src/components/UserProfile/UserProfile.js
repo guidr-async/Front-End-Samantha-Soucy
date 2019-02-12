@@ -71,8 +71,8 @@ export default function UserProfile(props) {
                                 :
                                 (
                                     <>
-                                        }
-                        <div>
+                                        
+                                        <div>
                                             <h4>Name: </h4>
                                             <p>{props.user.name}</p>
                                         </div>
@@ -92,9 +92,15 @@ export default function UserProfile(props) {
                         </div>
                     </div>
                 </div>
-                <div>
                 </div>
-                <InfoList user={props.user} userAdventures={props.userAdventures} />
+                <div>
+                <InfoList
+                    user={props.user}
+                    userAdventures={props.userAdventures}
+                    doneEditing={props.doneEditing}
+                    isEditingTrip={props.isEditingTrip}
+                    editingTrip={props.editingTrip}
+                />
             </div>
         </>
     );

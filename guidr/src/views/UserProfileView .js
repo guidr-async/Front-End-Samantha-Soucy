@@ -6,15 +6,19 @@ import { logOut } from "../actions";
 
 export class UserProfileView extends Component {
     state = {
-        editingProfile: false
+        editingProfile: false,
+        isEditingTrip: false
     }
     editingPro = () => {
         console.log("click Pro")
         this.setState({ editingProfile: true })
     }
+    editingTrip = () => {
+        this.setState({isEditingTrip: true})
+    }
     doneEditing = () => {
         console.log("click Done")
-        this.setState({ editingProfile: false })
+        this.setState({ editingProfile: false, isEditingTrip: false })
     }
 
     logout = () => {
@@ -28,7 +32,9 @@ export class UserProfileView extends Component {
                     user={this.props.user}
                     logout={this.logout}
                     editingProfile={this.state.editingProfile}
+                    isEditingTrip={this.state.isEditingTrip}
                     editingPro={this.editingPro}
+                    editingTrip={this.editingTrip}
                     doneEditing={this.doneEditing}
                     userAdventures={this.state.userAdventures}
                 />
