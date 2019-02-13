@@ -21,13 +21,13 @@ import {
 const initialState = {
     adventures: [],
     users: [],
-    user: [],
+    user: JSON.parse(localStorage.getItem("user")),
     fetchingInfo: false,
     fetchingUsers: false,
     loggingIn: false,
     loggedIn: false,
     fetchingAdventures: false,
-    userAdventures: [],
+    userAdventures: JSON.parse(localStorage.getItem('userAdventures')),
     error: null
 }
 

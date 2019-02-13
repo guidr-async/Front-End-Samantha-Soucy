@@ -17,6 +17,7 @@ export class LoginView extends Component {
         if (trueUser) {
             this.submitLogin(trueUser)
             this.props.getUserAdventure(trueUser.id)
+            localStorage.setItem("user", JSON.stringify(trueUser))
         } else {
             alert("sorry, you must register first")
         }
@@ -26,7 +27,6 @@ export class LoginView extends Component {
     }
 
     handleChange = (ev) => {
-        // console.log(ev.target.name, ev.target.value)
         this.setState({userLoggingIn:{...this.state.userLoggingIn, [ev.target.name]: ev.target.value}})
     }
     submitLogin = user => {
@@ -51,7 +51,8 @@ const mapStateToProps = (state) => ({
     loggedIn: state.loggedIn,
     error: state.error,
     user: state.user,
-    users: state.users
+    users: state.users,
+    getUserAdventure: state.getUserAdventure
 })
 
 const mapDispatchToProps = {

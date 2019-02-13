@@ -8,6 +8,7 @@ export class HomePageView extends Component {
         this.props.getHomePage()
     }
     logout = () => {
+        localStorage.clear();
         this.props.logOut()
         this.props.history.push("/")
     }

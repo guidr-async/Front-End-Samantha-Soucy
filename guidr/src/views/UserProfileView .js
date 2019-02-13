@@ -22,6 +22,7 @@ export class UserProfileView extends Component {
     }
 
     logout = () => {
+        localStorage.clear();
         this.props.logOut()
         this.props.history.push("/")
     }
@@ -36,7 +37,7 @@ export class UserProfileView extends Component {
                     editingPro={this.editingPro}
                     editingTrip={this.editingTrip}
                     doneEditing={this.doneEditing}
-                    userAdventures={this.state.userAdventures}
+                    userAdventures={this.props.userAdventures}
                 />
             </div>
         )

@@ -16,27 +16,27 @@ export default function SignUp(props) {
                     </div>
                     <div>
                         
-                            <input onChange={(ev) => props.handleChange(ev)}
+                            <input required onChange={(ev) => props.handleChange(ev)}
                                  id="email"
                                  type="email"
                                  name="email"
-                                 placeholder="Email" required
+                                 placeholder="Email" 
                              />
                         
                         <div>
-                            <input onChange={(ev) => props.handleChange(ev)} 
+                            <input required onChange={(ev) => props.handleChange(ev)} 
                                 id="password"
                                 type="password"
                                 name="password"
-                                placeholder="Password" required
+                                placeholder="Password" 
                             />
                         </div>
                         <div>
-                        <input onChange={(ev) => props.handleChange(ev)} 
+                        <input required onChange={(ev) => props.handleChange(ev)} 
                                 id="password2"
                                 type="password"
                                 name="password2"
-                                placeholder="Retype Password" required
+                                placeholder="Retype Password" 
                             />
                         </div>
                     </div>
@@ -77,12 +77,13 @@ export default function SignUp(props) {
                         </div>
                     </div>
                 </div>
-            </form>
+            
 
             <div>
                 <button onClick={ev => props.handleSubmit(ev)} type="submit">Submit</button>
                 <button onClick={ev => props.clearForm(ev)} type="button">Cancel</button>
-            </div>
+                </div>
+            </form>
         </div>
     )
 }

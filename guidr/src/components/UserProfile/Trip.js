@@ -1,16 +1,12 @@
 import React from 'react'
-// import { TweenMax } from "gsap/TweenMax";
+
 
 const showDescription = ev => {
     ev.preventDefault();
     const target = ev.target.nextSibling;
     if(target.classList.contains('hidden')){
       target.classList.toggle("hidden")
-    //   TweenMax.from(target, .75, {yPercent: -20, opacity: 0})
-    //   TweenMax.to(target, .5, { yPercent: 0,  opacity: 1});
     }else{
-    //   TweenMax.from(target, 1, {yPercent: 0, opacity: 1})
-    //   TweenMax.to(target, 1, { yPercent: -20,  opacity: 0});
       setTimeout( () =>{
         target.classList.toggle("hidden")
       }, 650)
@@ -18,106 +14,213 @@ const showDescription = ev => {
     }
   
 }
-  
-export default function Trip(props) {
-    console.log(props)
-    return (
-        <div>
-            <button onClick={ev => showDescription(ev)}>{props.trip.title}: {props.trip.date}: {props.trip.duration}:{props.trip.location}</button>
+
+class Trip extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            trip: {
+                "adventure_type": "",
+                "title": "",
+                "location": "",
+                "duration": "",
+                "description": " ",
+                "professional": false,
+                "date": null
+            }
+        }
+    }
+    componentDidMount() {
+        this.setState({ trip: this.props.trip })
+    }
+    handleChanges = ev => {
+        console.log(ev.target.value)
+        console.log(ev.target.name)
+        if (ev.target.name === "adventure_type") {
+            this.setState({
+                trip: ({
+                    ...this.state.trip,
+                    "adventure_type": ev.target.value
+                })
+            })
+        }
+        else if (ev.target.value === "professional") {
+            this.setState({
+                trip: ({
+                    ...this.state.trip,
+                    "professional": true
+                })
+            })
+        }
+        else if (ev.target.value === "personal") {
+            this.setState({
+                trip: ({
+                    ...this.state.trip,
+                    "professional": false
+                })
+            })
+        } else {
+            this.setState({
+                trip: ({
+                    ...this.state.trip,
+                    [ev.target.name]: ev.target.value
+                })
+            })
+        }
+
+    }
+    submitEditedAdventure = ev => {
+        ev.preventDefault()
+        this.props.doneEditing()
+        this.props.updateAdventure(this.props.trip.id, this.state.trip);
+    }
+    // deleteAdventure = () => {
+    //     this.props.deleteTrip(this.props.trip.id)
+    // }
+    render() {
+        return (
             <div>
+                <button onClick={ev => showDescription(ev)}>{this.props.trip.title} - {this.props.trip.date} -{this.props.trip.duration} - {this.props.trip.location}</button>
                 <div>
-                    {props.isEditingTrip ?
-                        (<i onClick={() => props.doneEditing()}></i>)
-                        :
-                        (<i onClick={() => props.editingTrip()}></i>)
-                    }
-                    {props.isEditingTrip ?
-                        (<>
-                            <div>
-                                <h4>Title: </h4>
-                                <input onChange={ev => props.handleChanges(ev)}
-                                    id="username"
-                                    type="text"
-                                    name="tutle"
-                                    placeholder="Name of Trip"
-                                />
-                            </div>
-                            <div>
-                                <h4>Location: </h4>
-                                <input onChange={ev => props.handleChanges(ev)}
-                                    id="username"
-                                    type="text"
-                                    name="tutle"
-                                    placeholder="Name of Trip"
-                                />
-                            </div>
-                            <div>
-                                <h4>Duration: </h4>
-                                <input onChange={ev => props.handleChanges(ev)}
-                                    id="username"
-                                    type="text"
-                                    name="tutle"
-                                    placeholder="Name of Trip"
-                                />
-                            </div>
-                            <div>
-                                <h4>Type of trip: </h4>
-                                <input onChange={ev => props.handleChanges(ev)}
-                                    id="username"
-                                    type="text"
-                                    name="tutle"
-                                    placeholder="Name of Trip"
-                                />
-                            </div>
-                            <div>
-                                <h4>Professional or Pleasure: </h4>
-                                <input onChange={ev => props.handleChanges(ev)}
-                                    id="username"
-                                    type="text"
-                                    name="tutle"
-                                    placeholder="Name of Trip"
-                                />
-                            </div>
-                            <div>
-                                <h4>Notes: <textarea rows="5" onChange={ev => props.handleChanges(ev)}
-                                    id="username"
-                                    type="text"
-                                    name="description"
-                                    spellCheck="true"
-                                    placeholder="About You"
-                                /></h4>
-                            </div>
-                        </>)
-                        : (
-                            <>
+                    <div>
+                        {this.props.mainUserPage ?
+                        this.props.isEditingTrip ?
+                            (<i onClick={(ev) => this.submitEditedAdventure(ev)}></i>)
+                            :
+                            (<div><i onClick={() => this.props.editingTrip()}></i>
+                                    <i onClick={() => this.deleteAdventure()}></i> </div>
+                            
+                                )
+                            : null
+                        }
+                        {this.props.isEditingTrip ?
+                            (<>
+                                <form onSubmit={ev => this.submitEditedAdventure(ev)}>
                                 <div>
                                     <h4>Title: </h4>
-                                    <p>{props.trip.title}</p>
+                                    <input onChange={ev => this.handleChanges(ev)}
+                                        id="username"
+                                        type="text"
+                                        name="tutle"
+                                        placeholder="Name of Trip"
+                                    />
                                 </div>
                                 <div>
                                     <h4>Location: </h4>
-                                    <p>{props.trip.location}</p>
+                                    <input onChange={ev => this.handleChanges(ev)}
+                                        id="username"
+                                        type="text"
+                                        name="tutle"
+                                        placeholder="Name of Trip"
+                                    />
                                 </div>
                                 <div>
-                                    <h4>Duraction: </h4>
-                                    <p>{props.trip.duration}</p>
+                                    <h4>Duration: </h4>
+                                    <input onChange={ev => this.handleChanges(ev)}
+                                        id="username"
+                                        type="text"
+                                        name="tutle"
+                                        placeholder="Name of Trip"
+                                    />
                                 </div>
                                 <div>
-                                    <h4> Type of Trip: </h4>
-                                    <p>{props.trip.adventure_type}</p>
+                                    <h4>Type of trip: </h4>
+                                    <div>
+                                        <input onChange={ev => this.handleChanges(ev)}
+                                        type="radio"
+                                        name="adventure_type"
+                                        value="Back Packing" />
+                                        <label>Back Packing</label>
+                                    </div>
+
+                                    <div>
+                                        <input onChange={ev => this.handleChanges(ev)}
+                                        type="radio"
+                                        name="adventure_type"
+                                        value="Hiking" />
+                                        <label>Hiking</label>
+                                    </div>
+                                
+                                    <div>
+                                        <input onChange={ev => this.handleChanges(ev)}
+                                        type="radio"
+                                        name="adventure_type"
+                                        value="white water rafting" />
+                                        <label>white water rafting</label>
+                                    </div>
+
+                                    <div><input onChange={ev => this.handleChanges(ev)}
+                                        type="radio"
+                                        name="adventure_type"
+                                        value="Rock Climbing" />
+                                        <label>Rock Climbing</label>
+                                    </div>
+
+                                    <div><input onChange={ev => this.handleChanges(ev)}
+                                        type="radio"
+                                        name="adventure_type"
+                                        value="Diving" />
+                                        <label>Diving</label>
+                                        </div>
+                                    </div>
+                           
+                                <div>
+                                    <h4>Professional or Pleasure: </h4>
+                                    <div>
+                                        <input type="radio" name="professional" value="professional"
+                                            onChange={ev => this.handleChanges(ev)} />
+                                        <label>Professional</label><br />
+                                        <input type="radio" name="professional" value="personal"
+                                            onChange={ev => this.handleChanges(ev)} />
+                                        <label>Pleasure</label>
+                                    </div>
                                 </div>
                                 <div>
-                                    <h4> Professional or Pleasure:</h4>
-                                    <p>{props.trip.professional ? "Professional" : "Pleasure"}</p>
-                                </div>
-                                <div>
-                                    <h4> Notes: <span>{props.trip.decription}</span></h4>
-                                </div>
+                                    <h4>Notes: <textarea rows="5" onChange={ev => this.handleChanges(ev)}
+                                        id="username"
+                                        type="text"
+                                        name="description"
+                                        value={this.state.trip.description}
+                                        spellCheck="true"
+                                        placeholder="About You"
+                                    /></h4>
+                                        </div>
+                                        </form>
                             </>)
-                    }
+                            :
+                            (
+                                <>
+                                    <div>
+                                        <h4>Title: </h4>
+                                        <p>{this.state.trip.title}</p>
+                                    </div>
+                                    <div>
+                                        <h4>Location: </h4>
+                                        <p>{this.state.trip.location}</p>
+                                    </div>
+                                    <div>
+                                        <h4>Duraction: </h4>
+                                        <p>{this.state.trip.duration}</p>
+                                    </div>
+                                    <div>
+                                        <h4> Type of Trip: </h4>
+                                        <p>{this.state.trip.adventure_type}</p>
+                                    </div>
+                                    <div>
+                                        <h4> Professional or Pleasure:</h4>
+                                        <p>{this.state.trip.professional ? "Professional" : "Pleasure"}</p>
+                                    </div>
+                                    <div>
+                                        <h4> Notes: <span>{this.state.trip.decription}</span></h4>
+                                    </div>
+                                </>)
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
+
+export default Trip;
   

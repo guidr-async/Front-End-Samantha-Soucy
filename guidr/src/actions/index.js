@@ -28,6 +28,10 @@ export const UPDATE_USER_START = "UPDATE_USER_START";
 export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
 export const UPDATE_USER_FAILURE = "UPDATE_USER_FAILURE"; 
 
+export const UPDATE_ADVENTURE_START = "UPDATE_ADVENTURE_START";
+export const UPDATE_ADVENTURE_SUCCESS = "UPDATE_ADVENTURE_SUCCESS";
+export const UPDATE_ADVENTURE_FAILURE = "UPDATE_ADVENTURE_FAILURE";
+
 export const SET_USER = "SET_USER";
 export const LOGGING_OUT = "LOGGING_OUT"
 
@@ -57,6 +61,8 @@ export const getUsers = () => dispatch => {
     axios
         .get(`https://guidr2.herokuapp.com/user`)
         .then(res => dispatch({ type: FETCH_USERS_SUCCESS, payload: res.data }))
+        .then(localStorage.removeItem("users"))
+        .then(res => localStorage.setItem("user", JSON.stringify(res.payload)))
         .catch(err => dispatch({ type: FETCH_USERS_FAILURE, payload: err }))
 };
 
@@ -72,6 +78,7 @@ export const getUserAdventure = id => dispatch => {
     axios
         .get(`https://guidr2.herokuapp.com/user/${id}/adventures`)
         .then(res => dispatch({ type: FETCH_USER_ADVENTURE_SUCCESS, payload: res.data }))
+        .then(res => localStorage.setItem("userAdventures", JSON.stringify(res.payload)))
         .catch(err => dispatch({ type: FETCH_USER_ADVENTURE_FAILURE, payload: err }))
 };
 
@@ -87,11 +94,20 @@ export const addUser = user => dispatch => {
     axios
         .post(`https://guidr2.herokuapp.com/user`, user)
         .then(res => dispatch({ type: ADD_USER_SUCCESS, payload: res.data }))
+        .then(dispatch(getUsers()))
         .catch(err => dispatch({ type: ADD_USER_FAILURE, payload: err }))
 };
 
-export const updateUser = id => dispatch => {
+export const updateUser = (id, ) => dispatch => {
     dispatch({ type: UPDATE_USER_START });
     axios
     .put(`https://guidr2.herokuapp.com/user/${id}`)
+}
+
+export const updateAdventure = (id, adventure) => dispatch => {
+    dispatch({ type: UPDATE_ADVENTURE_START });
+    axios
+        .put(`https://guidr2.herokuapp.com/adventures/${id}`, adventure)
+        .then(res => dispatch({ type: UPDATE_ADVENTURE_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({type: UPDATE_ADVENTURE_FAILURE, payload: err}))
 }

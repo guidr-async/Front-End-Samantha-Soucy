@@ -17,6 +17,21 @@ export default class AddInfoView extends Component{
             }
         }
     }
+
+    clearform = ev => {
+        ev.preventDefault();
+        this.setState({
+            username: "",
+            email: "",
+            password: "",
+            password2: "",
+            name: "",
+            location: "",
+            bio: "",
+            professional: false 
+        })
+        this.props.history.push("/user")
+    }
     handleChanges = ev => {
         console.log(ev.target.value)
         if (ev.target.name === "adventure_type") {
@@ -34,6 +49,15 @@ export default class AddInfoView extends Component{
                     "professional": true
                 })
             })
+        }
+        else if (ev.target.value === "personal") {
+            this.setState({
+                newTrip: ({
+                    ...this.state.newTrip,
+                    "professional": false
+                })
+            })
+        
         }else {
             this.setState({
                 newTrip: ({
@@ -47,7 +71,11 @@ export default class AddInfoView extends Component{
     render() {
         return (
             <div>
-                <AddInfo handleChanges={this.handleChanges} newTrip={this.state.newTrip} />
+                <AddInfo
+                    clearform={this.clearform}
+                    handleChanges={this.handleChanges}
+                    newTrip={this.state.newTrip}
+                />
             </div>
         )
     }

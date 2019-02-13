@@ -8,7 +8,7 @@ export default function HomePage(props) {
         <div>
             <header>
                 <nav>
-                    <Link to={"/user/:id"}>Portfolio</Link>
+                    <Link to={"/user"}>Portfolio</Link>
                     <Link onClick={() => props.logout()} to={"/"}>Logout</Link>
                 </nav>
             </header>

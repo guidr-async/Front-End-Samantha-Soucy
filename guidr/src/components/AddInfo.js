@@ -3,7 +3,7 @@ import React from "react";
 const AddInfo = props => {
     return (
         <div>
-            <form onSubmit={() => console.jog("submitting")}>
+            <form onSubmit={ev => props.submitAdventure(ev)}>
                 <h1>Add Information!</h1>
                 <div>
                     <label htmlFor="username">
@@ -17,21 +17,21 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                    <lable htmlFor="username">
+                    <label htmlFor="username">
                         Date
-                    </lable>
+                    </label>
                     <input onChange={ev => props.handleChanges(ev)}
                         type="date"
                         name="date"
                     />
                 </div>
                 <div>
-                    <lable htmlFor="username">
+                    <label htmlFor="username">
                         Location
-                    </lable>
+                    </label>
                     <input onChange={ev => props.handleChanges(ev)}
                         id="username"
-                        type="date"
+                        type="text"
                         name="location"
                         placeholder="Went to?"
                     />
@@ -47,6 +47,7 @@ const AddInfo = props => {
                         placeholder="how long was the Trip?"
                     />
                 </div>
+                <div>
                 <label htmlFor="username">
                     type
                 </label>
@@ -74,7 +75,7 @@ const AddInfo = props => {
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="trip_type"
-                        value="Cycling"
+                        value="White water rafting"
                     />
                     <label>
                         Cycling
@@ -84,7 +85,7 @@ const AddInfo = props => {
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="trip_type"
-                        value="Climbing"
+                        value="Rock Climbing"
                     />
                     <label>
                         Climbing
@@ -100,7 +101,7 @@ const AddInfo = props => {
                         Diving
                     </label>
                 </div>
-                <div>
+                </div>
                     <div>
                         <label htmlFor="username">
                             Professional or Pleasure
@@ -139,9 +140,9 @@ const AddInfo = props => {
                             />
                     </div>
                     <div>
-                        <button type="button">Submit</button>
+                        <button type="submit">Submit</button>
+                        <button onClick={ev=> props.clearForm(ev)} type="submit">Cancel</button>
                     </div>
-                </div>
             </form>
         </div>
     )

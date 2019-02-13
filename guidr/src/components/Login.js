@@ -7,10 +7,10 @@ export default function Login(props) {
         <div>
             <form onSubmit={ev => props.loginUserTest(ev)} autoComplete="on">
                 <div>
-                    <div>
+                    <label>
                         Username
-                    </div>
-                    <input onChange={ev => props.handleChange(ev)}
+                    </label>
+                    <input required onChange={ev => props.handleChange(ev)}
                         id="username"
                         type="text"
                         name="username"
@@ -18,10 +18,10 @@ export default function Login(props) {
                     />
                 </div>
                 <div>
-                    <div>
+                    <label>
                         Password
-                    </div>
-                    <input autoComplete="on" onChange={ev => props.handleChange(ev)}
+                    </label>
+                    <input required autoComplete="on" onChange={ev => props.handleChange(ev)}
                        id="password"
                        type="password"
                        name="password"
@@ -29,7 +29,7 @@ export default function Login(props) {
                    /> 
                 </div>
                 <div>
-                    <button>
+                    <button type="submit">
                         Log In
                     </button>
                     <Link to={"/signUp"} href="#">
