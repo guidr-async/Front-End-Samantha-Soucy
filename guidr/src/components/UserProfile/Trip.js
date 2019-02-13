@@ -74,24 +74,24 @@ class Trip extends React.Component {
         this.props.doneEditing()
         this.props.updateAdventure(this.props.trip.id, this.state.trip);
     }
-    // deleteAdventure = () => {
-    //     this.props.deleteTrip(this.props.trip.id)
-    // }
+    deleteAdventure = () => {
+        this.props.deleteTrip(this.props.trip.id)
+    }
     render() {
         return (
             <div>
                 <button onClick={ev => showDescription(ev)}>{this.props.trip.title} - {this.props.trip.date} -{this.props.trip.duration} - {this.props.trip.location}</button>
                 <div>
                     <div>
-                        {this.props.mainUserPage ?
-                        this.props.isEditingTrip ?
+                        
+                        {this.props.isEditingTrip ?
                             (<i onClick={(ev) => this.submitEditedAdventure(ev)}></i>)
                             :
-                            (<div><i onClick={() => this.props.editingTrip()}></i>
+                                (<div><i onClick={() => this.props.editingTrip()}></i>
                                     <i onClick={() => this.deleteAdventure()}></i> </div>
                             
                                 )
-                            : null
+                           
                         }
                         {this.props.isEditingTrip ?
                             (<>
@@ -101,7 +101,8 @@ class Trip extends React.Component {
                                     <input onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
-                                        name="tutle"
+                                        name="title"
+                                        value={this.state.trip.title}
                                         placeholder="Name of Trip"
                                     />
                                 </div>
@@ -110,8 +111,9 @@ class Trip extends React.Component {
                                     <input onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
-                                        name="tutle"
-                                        placeholder="Name of Trip"
+                                        name="location"
+                                        value={this.state.trip.location}
+                                        placeholder="Name of Location"
                                     />
                                 </div>
                                 <div>
@@ -119,8 +121,9 @@ class Trip extends React.Component {
                                     <input onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
-                                        name="tutle"
-                                        placeholder="Name of Trip"
+                                        name="duration"
+                                        value={this.state.trip.duraction}
+                                        placeholder="How Long Was your Trip"
                                     />
                                 </div>
                                 <div>
@@ -176,7 +179,7 @@ class Trip extends React.Component {
                                     </div>
                                 </div>
                                 <div>
-                                    <h4>Notes: <textarea rows="5" onChange={ev => this.handleChanges(ev)}
+                                    <h4>Notes: <textarea cols="100" rows="5" onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
                                         name="description"
@@ -223,4 +226,8 @@ class Trip extends React.Component {
 }
 
 export default Trip;
+
+
+
+
   

@@ -16,7 +16,7 @@ class App extends Component {
         <Route exact path="/" component={LoginView} />
         <Route path="/signUp" component={SignUpView} />
         <Route path="/homePage" component={HomePageView} />
-        <Route path="/user" component={UserProfileView } />
+        <Route exact path="/user/:id" component={UserProfileView} />
         <Route path="/addInfo" component={AddInfoView} />
         
       </div>
@@ -25,3 +25,8 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+

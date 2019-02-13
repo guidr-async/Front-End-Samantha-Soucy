@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import AddInfo from "../components/AddInfo";
+import { addAdventure, getHomePage } from "../actions";
 
-export default class AddInfoView extends Component{
+class AddInfoView extends Component{
     constructor(props) {
         super(props);
         this.state = {
             newTrip: {
+                "user_id": this.props.user.id,
                 "adventure_type": "",
                 "title": "",
                 "location": "",
@@ -18,7 +21,7 @@ export default class AddInfoView extends Component{
         }
     }
 
-    clearform = ev => {
+    clearForm = ev => {
         ev.preventDefault();
         this.setState({
             username: "",
@@ -30,7 +33,7 @@ export default class AddInfoView extends Component{
             bio: "",
             professional: false 
         })
-        this.props.history.push("/user")
+        this.props.history.push(`/user/${this.props.user.id}`)
     }
     handleChanges = ev => {
         console.log(ev.target.value)
@@ -68,6 +71,13 @@ export default class AddInfoView extends Component{
         }
     }
 
+    submitAdventure = ev => {
+        ev.preventDefault();
+        this.props.addAdventure(this.state.newTrip)
+        this.props.getHomePage();
+        this.props.isAddingAdventure ? console.log("addVen") : this.props.history.push(`/user/${this.props.user.id}`) 
+    }
+
     render() {
         return (
             <div>
@@ -75,9 +85,23 @@ export default class AddInfoView extends Component{
                     clearform={this.clearform}
                     handleChanges={this.handleChanges}
                     newTrip={this.state.newTrip}
+                    submitAdventure={this.submitAdventure}
                 />
             </div>
         )
     }
-
 }
+
+const mapStateToProps = (state) => ({
+    user: state.user,
+    isAddingAdventure: state.isAddingAdventure
+})
+const mapDispatchToProps = {
+    addAdventure,
+    getHomePage
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddInfoView)
+
+
+

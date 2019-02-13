@@ -11,26 +11,52 @@ class UserProfile extends React.Component {
                 email: ' ',
                 location: '',
                 bio: '',
-            }
+            },
+            mainUserPage: false,
+            pageUser: "",
+            pageUserAdventures: [],
+            id: this.props.match.params.id
         }
     }
-    componentDidMount() {
-        this.setState({
-            profile: {
-                name: this.props.user.name,
-                email: this.props.user.email,
-                location: this.props.user.location,
-                bio: this.props.user.bio
-            }
-        })
-    }
+
+    // getUserFromURL = () => {
+    //     const user = this.props.users.find(user => `${user.id}` === this.state.id)
+    //     this.setState({ pageUser: user })
+    //     user.id === this.props.user.id ? this.setState({ mainUserPage: true }) : this.setState({ mainUserPage: false })
+    //     this.props.getUserAdventure(user.id)
+    //     console.log("USERADVENTURES UP", this.props.userAdventures)
+    // }
+    // componentDidMount() {
+    //     this.getUserFromURL();
+        
+    // }
     handleChanges = ev => {
         this.setState({
-            profile: ({
-                ...this.state.profile,
+            pageUser: ({
+                ...this.state.pageUser,
                 [ev.target.name]: ev.target.value
             })
         })
+    }
+    // toggleMain = () => {
+    //     this.state.mainUserPage = true
+    // }
+
+    submitEditedProfile = ev => {
+        ev.preventDefault()
+        this.props.doneEditing()
+        this.props.updateUser(this.props.user.id, this.state.pageUser);
+        this.props.getUserAdventure(this.state.pageUser.id)
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.key !== this.props.location.key) {
+            this.setState({
+                pageUser: {
+                    ...this.props.user
+                }
+            })
+            this.props.getUserAdventure(this.props.user.id)
+        }
     }
     render() {
 
@@ -39,7 +65,8 @@ class UserProfile extends React.Component {
                 <div>
                     <nav>
                         <Link to={"/homePage"}>Trip page</Link>
-                        <Link to={"/addInfo"}>Add Trip</Link>
+                        {this.state.mainUserPage ? <Link to={"/addInfo"}>Add Trip</Link>
+                         : <Link to={`/user/${this.props.user.id}`}>Profile</Link>} 
                         <Link onClick={ev => this.props.logout(ev)} to={"/"}>Logout</Link>
                     </nav>
                     <div>
@@ -49,88 +76,124 @@ class UserProfile extends React.Component {
                     
                         <div>
                             <div>
-                                {this.props.editingProfile ?
-                                    (<i onClick={() => this.props.doneEditing()}></i>)
-                                    :
-                                    (<i onClick={() => this.props.editingPro()}></i>)
+                                
+                                        {this.state.mainUserPage ? 
+                                        this.props.isEditingProfile ? 
+                                        (<i onClick={(ev) => this.submitEditedProfile(ev)}></i>)
+                                        :
+                                        (<i onClick={() => this.props.editingPro()}></i>)
+                                    : null
                                 }
-                                {this.props.editingProfile ?
-                                    (
-                                        <>
-                                            <div>
-                                                <h4>Name: </h4>
-                                                <input onChange={ev => this.handleChanges(ev)}
-                                                    id="username"
-                                                    type="text"
-                                                    name="title"
-                                                    placeholder="Name of your Trip"
-                                                />
-                                            </div>
-                                            <div>
-                                                <h4>Email: </h4>
-                                                <input onChange={ev => this.handleChanges(ev)}
-                                                    id="username"
-                                                    type="text"
-                                                    name="title"
-                                                    placeholder="Name of your Trip"
-                                                />
-                                            </div>
-                                            <div>
-                                                <h4>Location: </h4>
-                                                <input onChange={ev => this.handleChanges(ev)}
-                                                    id="username"
-                                                    type="text"
-                                                    name="title"
-                                                    placeholder="Name of your Trip"
-                                                />
-                                            </div>
-                                            <div>
-                                                <h4>Bio:
-                                                <textarea rows="5" onChange={ev => this.handleChanges(ev)}
+                                
+                                        {this.state.mainUserPage ? 
+                                        this.props.isEditingProfile ? 
+                                        (
+                                            <>
+                                                
+                                                <div>
+                                                    <h4>Name: </h4>
+                                                    <input onChange={ev => this.handleChanges(ev)}
                                                         id="username"
                                                         type="text"
-                                                        name="decription"
-                                                        spellCheck="true"
-                                                        placeholder="About You"
+                                                        name="title"
+                                                        placeholder="Name of your Trip"
+                                                        value={this.state.pageUser.name}
                                                     />
-                                                </h4>
-                                            </div>
-                                        </>
+                                                </div>
+                                                <div>
+                                                    <h4>Email: </h4>
+                                                    <input onChange={ev => this.handleChanges(ev)}
+                                                        id="username"
+                                                        type="text"
+                                                        name="email"
+                                                        placeholder="Email"
+                                                        value={this.state.pageUser.email}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <h4>Location: </h4>
+                                                    <input onChange={ev => this.handleChanges(ev)}
+                                                        id="username"
+                                                        type="text"
+                                                        name="location"
+                                                        placeholder="Where were you"
+                                                        value={this.state.pageUser.location}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <h4>Bio:
+                                                <textarea rows="5" cols="100" onChange={ev => this.handleChanges(ev)}
+                                                            id="username"
+                                                            type="text"
+                                                            value={this.state.pageUser.bio}
+                                                            name="bio"
+                                                            spellCheck="true"
+                                                            placeholder="About You"
+                                                        />
+                                                    </h4>
+                                                </div>
+                                            </>
 
                                                 
-                                    )
-                                    :
-                                    (
-                                        <>
+                                        )
+                                        :
+                                        (
+                                            <>
                                         
+                                                <div>
+                                                    <h4>Name: </h4>
+                                                    <p>{this.state.pageUser.name}</p>
+                                                </div>
+                                                <div>
+                                                    <h4>Email: </h4>
+                                                    <p>{this.state.pageUser.email}</p>
+                                                </div>
+                                                <div>
+                                                    <h4>Location: </h4>
+                                                    <p>{this.state.pageUser.location}</p>
+                                                </div>
+                                                <div>
+                                                    <h4>Bio: <span>{this.state.pageUser.bio}</span></h4>
+                                                </div>
+                                            </>
+                                        )
+                                        :
+                                        (
+                                         <>
                                             <div>
                                                 <h4>Name: </h4>
-                                                <p>{this.state.profile.name}</p>
+                                                <p>{this.state.pageUser.name}</p>
                                             </div>
                                             <div>
                                                 <h4>Email: </h4>
-                                                <p>{this.state.profile.email}</p>
+                                                <p>{this.state.pageUser.Email}</p>
                                             </div>
                                             <div>
                                                 <h4>Location: </h4>
-                                                <p>{this.state.profile.location}</p>
+                                                <p>{this.state.pageUser.Location}</p>
                                             </div>
                                             <div>
-                                                <h4>Bio: <span>{this.state.profile.bio}</span></h4>
+                                                <h4>Bio: <span>{this.state.pageUser.bio}</span></h4>
                                             </div>
                                         </>
-                                    )}
+                                    )
+                                }
+        
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <InfoList
+                        pageUser={this.state.pageUser}
+                        mainUserPage={this.state.mainUserPage}
+                        updateAdventure={this.props.updateAdventure}
                         user={this.props.user}
                         userAdventures={this.props.userAdventures}
                         doneEditing={this.props.doneEditing}
                         isEditingTrip={this.props.isEditingTrip}
                         editingTrip={this.props.editingTrip}
+                        deleteTrip ={this.props.deleteTrip}
                     />
                 </div>
             </>
@@ -139,3 +202,6 @@ class UserProfile extends React.Component {
 }
 
 export default UserProfile;
+
+
+

@@ -2,23 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import UserProfile from "../components/UserProfile/UserProfile";
-import { logOut } from "../actions";
+import { logOut, updateAdventure, deleteTrip, updateUser, getUsers, getHomePage, getUserAdventure } from "../actions";
 
 export class UserProfileView extends Component {
     state = {
-        editingProfile: false,
+        isEditingProfile: false,
         isEditingTrip: false
+    }
+    componentDidMount() {
+        this.props.getHomePage()
+        // this.props.getUserAdventure(this.props.user.id)
     }
     editingPro = () => {
         console.log("click Pro")
-        this.setState({ editingProfile: true })
+        this.setState({ isEditingProfile: true })
     }
     editingTrip = () => {
         this.setState({isEditingTrip: true})
     }
     doneEditing = () => {
         console.log("click Done")
-        this.setState({ editingProfile: false, isEditingTrip: false })
+        this.setState({ isEditingProfile: false, isEditingTrip: false })
     }
 
     logout = () => {
@@ -30,14 +34,19 @@ export class UserProfileView extends Component {
         return (
             <div>
                 <UserProfile
+                    {...this.props}
                     user={this.props.user}
+                    users={this.props.users}
                     logout={this.logout}
-                    editingProfile={this.state.editingProfile}
+                    isEditingProfile={this.state.isEditingProfile}
                     isEditingTrip={this.state.isEditingTrip}
                     editingPro={this.editingPro}
                     editingTrip={this.editingTrip}
                     doneEditing={this.doneEditing}
                     userAdventures={this.props.userAdventures}
+                    updateAdventure={this.props.updateAdventure}
+                    deleteTrip={this.props.deleteTrip}
+                    getUserAdventure={this.props.getUserAdventure}
                 />
             </div>
         )
@@ -45,13 +54,23 @@ export class UserProfileView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    loggedIn: state.loggedIn,
+    isLoggedIn: state.isLoggedIn,
     user: state.user,
+    users: state.users,
     userAdventures: state.userAdventures
 })
 
 const mapDispatchToProps = {
-    logOut
+    logOut,
+    updateAdventure,
+    deleteTrip,
+    getHomePage,
+    getUserAdventure,
+    updateUser,
+    getUsers
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfileView);
+
+
+

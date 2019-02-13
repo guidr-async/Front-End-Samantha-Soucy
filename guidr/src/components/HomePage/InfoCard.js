@@ -8,7 +8,7 @@ export default function InfoCard(props) {
             <p>Location: {props.adventure.location}</p>
             <p>Type: {props.adventure.adventure_type}</p>
             <p>Duration: {props.adventure.duration}</p>
-            <p>Work or Pleasure: {props.adventure.professional ? "professional" : "pleasure"}</p>
+            <p>>Work or Pleasure: {props.adventure.professional ? "professional" : "pleasure"}</p>
 
             <div>
                 <div>
@@ -19,3 +19,5 @@ export default function InfoCard(props) {
         </div>
     )
 }
+
+

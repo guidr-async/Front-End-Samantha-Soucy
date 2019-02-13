@@ -37,6 +37,7 @@ export class LoginView extends Component {
         return (
             <div>
                 <Login
+                    {...this.props}
                     loginUserTest={this.loginUserTest}
                     submitLogin={this.submitLogin}
                     handleChange={this.handleChange}
@@ -48,11 +49,11 @@ export class LoginView extends Component {
 
 const mapStateToProps = (state) => ({
     username: state.username,
-    loggedIn: state.loggedIn,
+    isLoggedIn: state.isLoggedIn,
     error: state.error,
     user: state.user,
     users: state.users,
-    getUserAdventure: state.getUserAdventure
+    userAdventures: state.userAdventures
 })
 
 const mapDispatchToProps = {
@@ -64,3 +65,5 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+
+

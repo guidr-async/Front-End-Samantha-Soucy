@@ -4,7 +4,7 @@ const AddInfo = props => {
     return (
         <div>
             <form onSubmit={ev => props.submitAdventure(ev)}>
-                <h1>Add Information!</h1>
+                <h1>Add Trip Information!</h1>
                 <div>
                     <label htmlFor="username">
                         Title
@@ -141,10 +141,15 @@ const AddInfo = props => {
                     </div>
                     <div>
                         <button type="submit">Submit</button>
-                        <button onClick={ev=> props.clearForm(ev)} type="submit">Cancel</button>
+                    <button type="button">Cancel</button>
+                    {/* <button onClick={ev=> props.clearForm(ev)} type="button">Cancel</button> */}
                     </div>
             </form>
         </div>
     )
 }
 export default AddInfo;
+
+
+
+

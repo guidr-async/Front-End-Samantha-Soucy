@@ -67,6 +67,7 @@ export class SignUpView extends Component{
                         handleSubmit={this.handleSubmit}
                         handleChange={this.handleChange}
                         clearForm={this.clearForm}
+                        {...this.props}
                         />
                 </div>
             )
@@ -80,4 +81,6 @@ export class SignUpView extends Component{
         getUsers
     }
     export default connect(mapStateToProps, mapDispatchToProps)(SignUpView)
+
+
     
