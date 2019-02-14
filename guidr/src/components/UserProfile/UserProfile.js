@@ -2,91 +2,88 @@ import React from "react";
 import { Link } from "react-router-dom";
 import InfoList from "./InfoList";
 
-class UserProfile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            profile: {
-                name: '',
-                email: ' ',
-                location: '',
-                bio: '',
-            },
-            mainUserPage: false,
-            pageUser: "",
-            pageUserAdventures: [],
-            id: this.props.match.params.id
-        }
-    }
+export default function UserProfile(props) {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         profile: {
+    //             name: '',
+    //             email: '',
+    //             location: '',
+    //             bio: '',
+    //         },
+            // mainUserPage: false,
+            // pageUser: "",
+            // pageUserAdventures: [],
+            // id: this.props.match.params.id
+    //     }
+    // }
 
-    // getUserFromURL = () => {
-    //     const user = this.props.users.find(user => `${user.id}` === this.state.id)
-    //     this.setState({ pageUser: user })
-    //     user.id === this.props.user.id ? this.setState({ mainUserPage: true }) : this.setState({ mainUserPage: false })
-    //     this.props.getUserAdventure(user.id)
-    //     console.log("USERADVENTURES UP", this.props.userAdventures)
+    // componentDidMount(){
+    //     this.setState({profile: {
+    //       name: this.props.user.name,
+    //       email: this.props.user.email,
+    //       location: this.props.user.location,
+    //       bio: this.props.user.bio,
+    
+    //     } })
+    //   }
+    // handleChanges = ev => {
+    //     this.setState({
+    //         profile: ({
+    //             ...this.state.profile,
+    //             [ev.target.name]: ev.target.value
+    //         })
+    //     })
     // }
-    // componentDidMount() {
-    //     this.getUserFromURL();
-        
-    // }
-    handleChanges = ev => {
-        this.setState({
-            pageUser: ({
-                ...this.state.pageUser,
-                [ev.target.name]: ev.target.value
-            })
-        })
-    }
     // toggleMain = () => {
     //     this.state.mainUserPage = true
     // }
 
-    submitEditedProfile = ev => {
-        ev.preventDefault()
-        this.props.doneEditing()
-        this.props.updateUser(this.props.user.id, this.state.pageUser);
-        this.props.getUserAdventure(this.state.pageUser.id)
-    }
-    componentDidUpdate(prevProps) {
-        if (prevProps.location.key !== this.props.location.key) {
-            this.setState({
-                pageUser: {
-                    ...this.props.user
-                }
-            })
-            this.props.getUserAdventure(this.props.user.id)
-        }
-    }
-    render() {
+    // submitEditedProfile = ev => {
+    //     ev.preventDefault()
+    //     this.props.doneEditing()
+    //     this.props.updateUser(this.props.user.id, this.state.pageUser);
+    //     this.props.getUserAdventure(this.state.pageUser.id)
+    // }
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.location.key !== this.props.location.key) {
+    //         this.setState({
+    //             pageUser: {
+    //                 ...this.props.user
+    //             }
+    //         })
+    //         this.props.getUserAdventure(this.props.user.id)
+    //     }
+    // }
+    // render() {
 
         return (
             <>
                 <div>
                     <nav>
                         <Link to={"/homePage"}>Trip page</Link>
-                        {this.state.mainUserPage ? <Link to={"/addInfo"}>Add Trip</Link>
-                         : <Link to={`/user/${this.props.user.id}`}>Profile</Link>} 
-                        <Link onClick={ev => this.props.logout(ev)} to={"/"}>Logout</Link>
+                        {/* { {this.state.mainUserPage ?  */}
+                        <Link to={"/addInfo"}>Add Trip</Link> 
+                         {/* : <Link onClick={()=>this.toggleMain()} to={`/user/${this.props.user.id}`}>Profile</Link>}  */}
+                        <Link onClick={ev => props.logout(ev)} to={"/"}>Logout</Link>
                     </nav>
                     <div>
                         <div>
-                            <img src={""} alt="" />
+                            {/* <img src={""} alt="" /> */}
                         </div>
                     
                         <div>
                             <div>
                                 
-                                        {this.state.mainUserPage ? 
-                                        this.props.isEditingProfile ? 
-                                        (<i onClick={(ev) => this.submitEditedProfile(ev)}></i>)
+                            {props.isEditingProfile ? 
+                                        (<i onClick={() => props.doneEditing()}></i>)
                                         :
-                                        (<i onClick={() => this.props.editingPro()}></i>)
-                                    : null
+                                        (<i onClick={() => props.editingPro()}></i>)
+                                    
                                 }
                                 
-                                        {this.state.mainUserPage ? 
-                                        this.props.isEditingProfile ? 
+                                {props.isEditingProfile ? 
                                         (
                                             <>
                                                 
@@ -95,9 +92,9 @@ class UserProfile extends React.Component {
                                                     <input onChange={ev => this.handleChanges(ev)}
                                                         id="username"
                                                         type="text"
-                                                        name="title"
-                                                        placeholder="Name of your Trip"
-                                                        value={this.state.pageUser.name}
+                                                        name="name"
+                                                        placeholder="Your Name"
+                                                        // value={this.state.pageUser.name}
                                                     />
                                                 </div>
                                                 <div>
@@ -107,7 +104,7 @@ class UserProfile extends React.Component {
                                                         type="text"
                                                         name="email"
                                                         placeholder="Email"
-                                                        value={this.state.pageUser.email}
+                                                        // value={this.state.pageUser.email}
                                                     />
                                                 </div>
                                                 <div>
@@ -117,15 +114,15 @@ class UserProfile extends React.Component {
                                                         type="text"
                                                         name="location"
                                                         placeholder="Where were you"
-                                                        value={this.state.pageUser.location}
+                                                        // value={this.state.pageUser.location}
                                                     />
                                                 </div>
                                                 <div>
                                                     <h4>Bio:
-                                                <textarea rows="5" cols="100" onChange={ev => this.handleChanges(ev)}
+                                                <textarea rows="5" cols="100" onChange={ev => props.handleChanges(ev)}
                                                             id="username"
                                                             type="text"
-                                                            value={this.state.pageUser.bio}
+                                                            // value={this.state.pageUser.bio}
                                                             name="bio"
                                                             spellCheck="true"
                                                             placeholder="About You"
@@ -142,40 +139,21 @@ class UserProfile extends React.Component {
                                         
                                                 <div>
                                                     <h4>Name: </h4>
-                                                    <p>{this.state.pageUser.name}</p>
+                                                    <p>{props.user.name}</p>
                                                 </div>
                                                 <div>
                                                     <h4>Email: </h4>
-                                                    <p>{this.state.pageUser.email}</p>
+                                                    <p>{props.user.email}</p>
                                                 </div>
                                                 <div>
                                                     <h4>Location: </h4>
-                                                    <p>{this.state.pageUser.location}</p>
+                                                    <p>{props.user.location}</p>
                                                 </div>
                                                 <div>
-                                                    <h4>Bio: <span>{this.state.pageUser.bio}</span></h4>
+                                                    <h4>Bio: <span>{props.user.bio}</span></h4>
                                                 </div>
                                             </>
-                                        )
-                                        :
-                                        (
-                                         <>
-                                            <div>
-                                                <h4>Name: </h4>
-                                                <p>{this.state.pageUser.name}</p>
-                                            </div>
-                                            <div>
-                                                <h4>Email: </h4>
-                                                <p>{this.state.pageUser.Email}</p>
-                                            </div>
-                                            <div>
-                                                <h4>Location: </h4>
-                                                <p>{this.state.pageUser.Location}</p>
-                                            </div>
-                                            <div>
-                                                <h4>Bio: <span>{this.state.pageUser.bio}</span></h4>
-                                            </div>
-                                        </>
+                                       
                                     )
                                 }
         
@@ -185,23 +163,23 @@ class UserProfile extends React.Component {
                 </div>
                 <div>
                     <InfoList
-                        pageUser={this.state.pageUser}
-                        mainUserPage={this.state.mainUserPage}
-                        updateAdventure={this.props.updateAdventure}
-                        user={this.props.user}
-                        userAdventures={this.props.userAdventures}
-                        doneEditing={this.props.doneEditing}
-                        isEditingTrip={this.props.isEditingTrip}
-                        editingTrip={this.props.editingTrip}
-                        deleteTrip ={this.props.deleteTrip}
+                        pageUser={props.pageUser}
+                        mainUserPage={props.mainUserPage}
+                        updateAdventure={props.updateAdventure}
+                        user={props.user}
+                        userAdventures={props.userAdventures}
+                        doneEditing={props.doneEditing}
+                        // isEditingTrip={this.props.isEditingTrip}
+                        editingTrip={props.editingTrip}
+                        deleteTrip ={props.deleteTrip}
                     />
                 </div>
             </>
         )
     }
-}
 
-export default UserProfile;
+
+// export default UserProfile;
 
 
 

@@ -84,14 +84,15 @@ class Trip extends React.Component {
                 <div>
                     <div>
                         
-                        {this.props.isEditingTrip ?
+                    {this.props.mainUserPage ?
+                        this.props.isEditingTrip ?
                             (<i onClick={(ev) => this.submitEditedAdventure(ev)}></i>)
                             :
                                 (<div><i onClick={() => this.props.editingTrip()}></i>
                                     <i onClick={() => this.deleteAdventure()}></i> </div>
                             
                                 )
-                           
+                           : null
                         }
                         {this.props.isEditingTrip ?
                             (<>

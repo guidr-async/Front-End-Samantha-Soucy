@@ -1,5 +1,8 @@
 import axios from "axios";
 
+export const TRANSITION_START ="TRANSITION_START"
+export const TRANSITION_END ="TRANSITION_END"
+
 export const FETCH_HOMEPAGE_START = "FETCH_HOMEPAGE_START";
 export const FETCH_HOMEPAGE_SUCCESS = "FETCH_HOMEPAGE_SUCCESS";
 export const FETCH_HOMEPAGE_FAILURE = "FETCH_HOMEPAGE_FAILURE";
@@ -116,6 +119,7 @@ export const deleteTrip = (id) => dispatch => {
 };
 export const addAdventure = (adventure) => dispatch => {
     dispatch({ type: ADD_ADVENTURE_START });
+    console.log(adventure)
     axios
         .post(`https://guidr2.herokuapp.com/adventures`, adventure)
         .then(res => dispatch({ type: ADD_ADVENTURE_SUCCESS, payload: res.data }))
@@ -135,6 +139,11 @@ export const userLogin = (user) => dispatch => {
         .post(`https://guidr2.herokuapp.com/login`, user)
         .then(resp => dispatch({type: USER_LOGIN_SUCCESS, payload: resp}))
         .catch(resp => dispatch({USER_LOGIN_FAILURE, payload: resp}))
+};
+
+export const transition = dispatch => {
+    dispatch({ type: UPDATE_USER_START })
+        .then({ type: UPDATE_USER_SUCCESS })
 };
 
 

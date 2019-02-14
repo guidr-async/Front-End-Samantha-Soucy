@@ -5,10 +5,10 @@ export default function InfoCard(props) {
     return (
         <div>
             <div>{props.adventure.title}</div>
-            <p>Location: {props.adventure.location}</p>
-            <p>Type: {props.adventure.adventure_type}</p>
-            <p>Duration: {props.adventure.duration}</p>
-            <p>>Work or Pleasure: {props.adventure.professional ? "professional" : "pleasure"}</p>
+            <p><span>Location: </span> {props.adventure.location}</p>
+            <p><span>Type: </span> {props.adventure.adventure_type}</p>
+            <p><span>Duration: </span> {props.adventure.duration}</p>
+            <p><span>Work or Pleasure: </span> {props.adventure.professional ? "professional" : "pleasure"}</p>
 
             <div>
                 <div>

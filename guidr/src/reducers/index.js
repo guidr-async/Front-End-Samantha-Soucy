@@ -2,37 +2,50 @@ import {
     FETCH_HOMEPAGE_START,
     FETCH_HOMEPAGE_SUCCESS,
     FETCH_HOMEPAGE_FAILURE,
+    
     FETCH_USERS_START,
     FETCH_USERS_SUCCESS,
     FETCH_USERS_FAILURE,
+    
     ADD_USER_START,
     ADD_USER_SUCCESS,
     ADD_USER_FAILURE,
+    
     USER_LOGIN_START,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAILURE,
+    
     SET_USER,
+    
     LOGGING_OUT,
+    
     FETCH_USER_ADVENTURE_START,
     FETCH_USER_ADVENTURE_SUCCESS,
     FETCH_USER_ADVENTURE_FAILURE,
+    
     UPDATE_ADVENTURE_START,
     UPDATE_ADVENTURE_SUCCESS,
     UPDATE_ADVENTURE_FAILURE,
+    
     UPDATE_USER_START,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILURE,
+    
     DELETING_ADVENTURE_START,
     DELETING_ADVENTURE_SUCCESS,
+    
     ADD_ADVENTURE_START,
     ADD_ADVENTURE_SUCCESS,
-    ADD_ADVENTURE_FAILURE
+    ADD_ADVENTURE_FAILURE,
+
+    // TRANSITION_START,
+    // TRANSITION_END
 } from "../actions"
 
 const initialState = {
     adventures: [],
-    users: JSON.parse(localStorage.getItem("users")),
-    user: JSON.parse(localStorage.getItem("user")),
+    users: [],
+    user: {},
     isFetchingInfo: false,
     isFetchingUsers: false,
     isLoggingIn: false,
@@ -41,7 +54,7 @@ const initialState = {
     isUpdatingUser: false,
     isUpdating: false,
     isAddingAdventure: false,
-    userAdventures: [],
+    userAdventures: JSON.parse(localStorage.getItem('userAdventures')),
     error: null
 }
 
@@ -56,7 +69,7 @@ export default (state = initialState, { type, payload }) => {
         case LOGGING_OUT:
             return {
                 ...state,
-                user: [],
+                user: {},
                 isLoggedIn: false
             };
         case FETCH_HOMEPAGE_START:
@@ -85,12 +98,13 @@ export default (state = initialState, { type, payload }) => {
                 error: null
             };
         case FETCH_USERS_SUCCESS:
-            const loadedUsers = payload.map(user => { return { name: user.name, username: user.username, id: user.id, loaction: user.loaction, bio: user.bio, professional: user.professional, email: user.email } });
-            localStorage.setItem("user", JSON.stringify(loadedUsers))
+            console.log("fet_users", payload)
+            // const loadedUsers = payload.map(user => { return { name: user.name, username: user.username, id: user.id, location: user.location, bio: user.bio, professional: user.professional, email: user.email } });
+            localStorage.setItem("users", JSON.stringify(payload))
             return {
                 ...state,
                 isFetchingUsers: false,
-                users: loadedUsers,
+                users: payload,
                 error:null
             };
         case FETCH_USERS_FAILURE:
@@ -103,10 +117,11 @@ export default (state = initialState, { type, payload }) => {
         case ADD_USER_START:
             return {
                 ...state,
-                isAddingInfo: true,
+                isAddingUser: true,
                 error: null
             };
         case ADD_USER_SUCCESS:
+            console.log(payload)
             return {
                 ...state,
                 users: payload,
@@ -127,12 +142,14 @@ export default (state = initialState, { type, payload }) => {
                 isLoggedIn: true
             };
         case USER_LOGIN_SUCCESS:
+            const trueUser = state.users.find(user => user.username === payload.data.message)
+            localStorage.setItem("token", payload.data.token)
             return {
                 ...state,
                 error: null,
                 isLoggedIn: true,
                 isLoggingIn: false,
-                username: payload
+                user: trueUser
             };
         case USER_LOGIN_FAILURE:
             return {
