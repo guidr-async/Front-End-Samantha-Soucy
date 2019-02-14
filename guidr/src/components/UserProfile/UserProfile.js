@@ -169,7 +169,7 @@ export default function UserProfile(props) {
                         user={props.user}
                         userAdventures={props.userAdventures}
                         doneEditing={props.doneEditing}
-                        // isEditingTrip={this.props.isEditingTrip}
+                        isEditingTrip={props.isEditingTrip}
                         editingTrip={props.editingTrip}
                         deleteTrip ={props.deleteTrip}
                     />

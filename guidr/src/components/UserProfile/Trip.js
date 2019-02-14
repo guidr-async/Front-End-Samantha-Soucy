@@ -1,19 +1,7 @@
 import React from 'react'
 
 
-// const showDescription = ev => {
-//     ev.preventDefault();
-//     const target = ev.target.nextSibling;
-//     if(target.classList.contains('hidden')){
-//       target.classList.toggle("hidden")
-//     }else{
-//       setTimeout( () =>{
-//         target.classList.toggle("hidden")
-//       }, 650)
-  
-//     }
-  
-// }
+
 
 class Trip extends React.Component {
     constructor(props) {
@@ -77,6 +65,8 @@ class Trip extends React.Component {
     deleteAdventure = () => {
         this.props.deleteTrip(this.props.trip.id)
     }
+    
+
     render() {
         return (
             <div>
@@ -87,15 +77,20 @@ class Trip extends React.Component {
                     {this.props.isEditingTrip ? 
                             (<i onClick={(ev) => this.submitEditedAdventure(ev)}></i>)
                             :
-                                (<div><i onClick={() => this.props.editingTrip()}></i>
-                                    <button onClick={() => this.deleteAdventure()}> Delete</button> </div>
+                            <div>
+                                <button onClick={() => this.props.editingTrip()}>Update</button>
+                                
+                                <button onClick={() => this.deleteAdventure()}> Delete</button>
+                            </div>
                             
-                                )
+                            
+                                
                            
                         }
                         {this.props.isEditingTrip ?
                             (<>
                                 <form onSubmit={ev => this.submitEditedAdventure(ev)}>
+                                <button onClick={() => this.props.doneEditing()}>Done</button>
                                 <div>
                                     <h4>Title: </h4>
                                     <input onChange={ev => this.handleChanges(ev)}
@@ -229,7 +224,7 @@ class Trip extends React.Component {
                                         <p>{this.state.trip.professional ? "Professional" : "Pleasure"}</p>
                                     </div>
                                     <div>
-                                        <h4> Notes: <span>{this.state.trip.decription}</span></h4>
+                                        <h4> Notes: {this.state.trip.decription}</h4>
                                     </div>
                                 </>)
                         }

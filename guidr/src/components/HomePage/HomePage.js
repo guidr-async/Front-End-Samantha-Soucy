@@ -15,14 +15,14 @@ export default function HomePage(props) {
                 {/* <img src={""} alt="" /> */}
                 </div>
             </header>
-            <div>
+            <div className="filter">
                 <h4>Trip Type:</h4>
                 <div onClick={ev => props.changeSelected(ev)} className="All">All</div>
-                <div onClick={ev => props.changeSelected(ev)} className="Hiking">Hiking</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="Back Packing">Back Packing</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="Rock Climbing">Rock Climbing</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="Cycling">Cycling</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="Scuba Diving">Scuba Diving</div>
+                <div onClick={ev => props.changeSelected(ev)} className="All">Hiking</div>
+                <div onClick={ev =>props.changeSelected(ev)} className="All">Back Packing</div>
+                <div onClick={ev =>props.changeSelected(ev)} className="All">Rock Climbing</div>
+                <div onClick={ev =>props.changeSelected(ev)} className="All">Cycling</div>
+                <div onClick={ev =>props.changeSelected(ev)} className="All">Scuba Diving</div>
             </div>
             <section>
             {props.adventures.map(item => {return <InfoCard key={item.id} user={props.users.find(user=> user.id === item.user_id )} adventure={item} />})}

@@ -66,7 +66,7 @@ class AuthLogin extends Component {
   render() {
       return (
 
-          <form onSubmit={this.submitHandler} autoComplete="on" >
+          <form onSubmit={this.submitHandler} autoComplete="on" className="text-font bg-green-darker z-10 shadow-md rounded px-8 pt-6 pb-8 mb-4" >
               <div >
                   <label htmlFor="username">
                       Username

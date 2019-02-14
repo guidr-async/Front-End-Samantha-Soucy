@@ -131,12 +131,15 @@ const AddInfo = props => {
                         <label htmlFor="username">
                             Drscription/Notes
                         </label>
-                        <textarea rows="5" onChange={ev => props.handleChanges(ev)}
+                        <textarea rows="5"
                             id="username"
                             type="text"
                             name="description"
                             spellCheck="true"
+                            value="notes"
+                            onChange={ev => props.handleChanges(ev)}
                             placeholder="Additional Info"
+                            
                             />
                     </div>
                     <div>
