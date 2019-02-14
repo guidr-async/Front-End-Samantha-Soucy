@@ -12,7 +12,8 @@ export default function InfoCard(props) {
 
             <div>
                 <div>
-                    <Link to={`/user/${props.user.id}`}>{props.user.username}</Link>
+                    {/* <Link to={`/user/${props.user.id}`}>{props.user.username}</Link> */}
+                    <Link to="/user/:id">{props.user.username}</Link>
                     <p>{props.adventure.date}</p>
                 </div>
             </div>

@@ -189,7 +189,7 @@ class AuthRegister extends Component {
               Submit
         </button>
             <button onClick={ev => this.props.clearForm(ev)} type="button">
-              Clear
+              Cancel
         </button>
           </div>
         </form>
