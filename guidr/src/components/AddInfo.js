@@ -3,10 +3,10 @@ import React from "react";
 const AddInfo = props => {
     return (
         <div>
-            <form onSubmit={() => console.jog("submitting")}>
-                <h1>Add Information!</h1>
+            <form onSubmit={ev => props.submitAdventure(ev)}>
+                <h1>Add Trip Information!</h1>
                 <div>
-                    <label>
+                    <label htmlFor="username">
                         Title
                     </label>
                     <input onChange={ev => props.handleChanges(ev)}
@@ -17,27 +17,27 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                    <lable>
+                    <label htmlFor="username">
                         Date
-                    </lable>
+                    </label>
                     <input onChange={ev => props.handleChanges(ev)}
                         type="date"
                         name="date"
                     />
                 </div>
                 <div>
-                    <lable>
+                    <label htmlFor="username">
                         Location
-                    </lable>
+                    </label>
                     <input onChange={ev => props.handleChanges(ev)}
                         id="username"
-                        type="date"
+                        type="text"
                         name="location"
                         placeholder="Went to?"
                     />
                 </div>
                 <div>
-                    <label>
+                    <label htmlFor="username">
                         Duration
                     </label>
                     <input onChange={ev => props.handleChanges(ev)}
@@ -47,7 +47,8 @@ const AddInfo = props => {
                         placeholder="how long was the Trip?"
                     />
                 </div>
-                <label>
+                <div>
+                <label htmlFor="username">
                     type
                 </label>
                 <div>
@@ -74,7 +75,7 @@ const AddInfo = props => {
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="trip_type"
-                        value="Cycling"
+                        value="White water rafting"
                     />
                     <label>
                         Cycling
@@ -84,7 +85,7 @@ const AddInfo = props => {
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="trip_type"
-                        value="Climbing"
+                        value="Rock Climbing"
                     />
                     <label>
                         Climbing
@@ -100,9 +101,9 @@ const AddInfo = props => {
                         Diving
                     </label>
                 </div>
-                <div>
+                </div>
                     <div>
-                        <label>
+                        <label htmlFor="username">
                             Professional or Pleasure
                         </label>
                         <div>
@@ -127,7 +128,7 @@ const AddInfo = props => {
                         </div>
                     </div>
                     <div>
-                        <label>
+                        <label htmlFor="username">
                             Drscription/Notes
                         </label>
                         <textarea rows="5" onChange={ev => props.handleChanges(ev)}
@@ -139,11 +140,16 @@ const AddInfo = props => {
                             />
                     </div>
                     <div>
-                        <button type="button">Submit</button>
+                        <button type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                    {/* <button onClick={ev=> props.clearForm(ev)} type="button">Cancel</button> */}
                     </div>
-                </div>
             </form>
         </div>
     )
 }
 export default AddInfo;
+
+
+
+

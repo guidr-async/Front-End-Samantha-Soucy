@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import SignUp from "../components/SignUp";
 
-import { addUser } from "../actions";
+import { addUser, getUsers } from "../actions";
 
 export class SignUpView extends Component{
     state = {
@@ -47,16 +47,15 @@ export class SignUpView extends Component{
             this.props.addUser(newUserLocal)
             this.props.error ? alert(this.props.error) : this.clearForm(ev);
         } else {
-            alert("Passwords do not matchMedia.")
+            alert("Passwords do not match.")
         }
+        this.props.getUsers();
     }
 
         handleChange = (ev) => {
             console.log(ev.target.name, ev.target.value)
             if (ev.target.name === "professional") {
-                this.setState({
-                    newUser: { ...this.state.newUser, professional: !this.state.professional }
-                })
+                this.setState({newUser:{...this.state.newUser, professional: !this.state.professional }})
             } else {
                 this.setState({newUser:{...this.state.newUser, [ev.target.name]: ev.target.value}})
             }
@@ -68,6 +67,7 @@ export class SignUpView extends Component{
                         handleSubmit={this.handleSubmit}
                         handleChange={this.handleChange}
                         clearForm={this.clearForm}
+                        {...this.props}
                         />
                 </div>
             )
@@ -77,7 +77,10 @@ export class SignUpView extends Component{
         error: state.error
     })
     const mapDispatchToProps = {
-        addUser
+        addUser,
+        getUsers
     }
     export default connect(mapStateToProps, mapDispatchToProps)(SignUpView)
+
+
     

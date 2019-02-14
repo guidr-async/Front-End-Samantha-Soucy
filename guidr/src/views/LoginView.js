@@ -1,29 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Login from "../components/Login";
-import { userLogin } from "../actions";
+import { userLogin, getUsers, getSingleUser, setUser, getUserAdventure } from "../actions";
 
 export class LoginView extends Component {
     state = {
-        loggingIn: {
+        userLoggingIn: {
             username: "",
             password: ""
         }
     }
+    
+    loginUserTest = (ev) => {
+        ev.preventDefault();
+        const trueUser = this.props.users.find(user=> user.username === this.state.userLoggingIn.username);
+        if (trueUser) {
+            this.submitLogin(trueUser)
+            this.props.getUserAdventure(trueUser.id)
+            localStorage.setItem("user", JSON.stringify(trueUser))
+        } else {
+            alert("sorry, you must register first")
+        }
+    }
+    componentDidMount() {
+        this.props.getUsers();
+    }
 
     handleChange = (ev) => {
-        console.log(ev.target.name, ev.target.value)
-        this.setState({loggingIn:{...this.loggingIn, [ev.target.name]: ev.target.value}})
+        this.setState({userLoggingIn:{...this.state.userLoggingIn, [ev.target.name]: ev.target.value}})
     }
-    submitLogin = ev => {
-        ev.preventdefault();
-        this.props.userLogin(this.state.loggingIn)
+    submitLogin = user => {
+        this.props.setUser(user)
         this.props.error ? alert(this.props.error) : this.props.history.push("/homePage");
     }
     render() {
         return (
             <div>
                 <Login
+                    {...this.props}
+                    loginUserTest={this.loginUserTest}
                     submitLogin={this.submitLogin}
                     handleChange={this.handleChange}
                     />
@@ -34,12 +49,21 @@ export class LoginView extends Component {
 
 const mapStateToProps = (state) => ({
     username: state.username,
-    loggedIn: state.loggedIn,
-    error: state.error
+    isLoggedIn: state.isLoggedIn,
+    error: state.error,
+    user: state.user,
+    users: state.users,
+    userAdventures: state.userAdventures
 })
 
 const mapDispatchToProps = {
-    userLogin
+    userLogin,
+    getUsers,
+    getSingleUser,
+    setUser,
+    getUserAdventure
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+
+
