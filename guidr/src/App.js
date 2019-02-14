@@ -5,7 +5,7 @@ import './App.css';
 import LoginView from "./views/LoginView"
 import SignUpView from "./views/SignUpView"
 import HomePageView from "./views/HomePageView"
-import UserProfileView  from "./views/UserProfileView "
+import UserProfileView  from "./views/UserProfileView"
 import AddInfoView from "./views/AddInfoView"
 
 
@@ -16,7 +16,8 @@ class App extends Component {
         <Route exact path="/" component={LoginView} />
         <Route path="/signUp" component={SignUpView} />
         <Route path="/homePage" component={HomePageView} />
-        <Route exact path="/user/:id" component={UserProfileView} />
+        <Route exact path="/user" component={UserProfileView} />
+        <Route path="/user/:id" component={UserProfileView} />
         <Route path="/addInfo" component={AddInfoView} />
         
       </div>

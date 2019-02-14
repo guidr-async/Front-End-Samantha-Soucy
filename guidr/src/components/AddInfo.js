@@ -21,7 +21,7 @@ const AddInfo = props => {
                         Date
                     </label>
                     <input onChange={ev => props.handleChanges(ev)}
-                        type="date"
+                        type="text"
                         name="date"
                     />
                 </div>
@@ -54,8 +54,8 @@ const AddInfo = props => {
                 <div>
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
-                        name="trip_type"
-                        value="back_packing"
+                        name="adventure_type"
+                        value="back packing"
                     />
                     <label>
                         Back Packing
@@ -64,7 +64,7 @@ const AddInfo = props => {
                 <div>
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
-                        name="trip_type"
+                        name="adventure_type"
                         value="Hiking"
                     />
                     <label>
@@ -74,7 +74,7 @@ const AddInfo = props => {
                 <div>
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
-                        name="trip_type"
+                        name="adventure_type"
                         value="White water rafting"
                     />
                     <label>
@@ -84,7 +84,7 @@ const AddInfo = props => {
                 <div>
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
-                        name="trip_type"
+                        name="adventure_type"
                         value="Rock Climbing"
                     />
                     <label>
@@ -94,7 +94,7 @@ const AddInfo = props => {
                 <div>
                 <input onChange={ev => props.handleChanges(ev)}
                         type="radio"
-                        name="trip_type"
+                        name="adventure_type"
                         value="Diving"
                     />
                     <label>
@@ -141,8 +141,8 @@ const AddInfo = props => {
                     </div>
                     <div>
                         <button type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                    {/* <button onClick={ev=> props.clearForm(ev)} type="button">Cancel</button> */}
+                    
+                        <button onClick={ev=> props.clearForm(ev)} type="button">Clear</button>
                     </div>
             </form>
         </div>

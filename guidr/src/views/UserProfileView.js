@@ -11,7 +11,6 @@ export class UserProfileView extends Component {
     }
     componentDidMount() {
         this.props.getHomePage()
-        // this.props.getUserAdventure(this.props.user.id)
     }
     editingPro = () => {
         console.log("click Pro")
@@ -70,7 +69,7 @@ const mapDispatchToProps = {
     getUsers
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfileView);
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfileView)
 
 
 

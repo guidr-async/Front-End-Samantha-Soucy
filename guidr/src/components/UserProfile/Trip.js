@@ -1,19 +1,19 @@
 import React from 'react'
 
 
-const showDescription = ev => {
-    ev.preventDefault();
-    const target = ev.target.nextSibling;
-    if(target.classList.contains('hidden')){
-      target.classList.toggle("hidden")
-    }else{
-      setTimeout( () =>{
-        target.classList.toggle("hidden")
-      }, 650)
+// const showDescription = ev => {
+//     ev.preventDefault();
+//     const target = ev.target.nextSibling;
+//     if(target.classList.contains('hidden')){
+//       target.classList.toggle("hidden")
+//     }else{
+//       setTimeout( () =>{
+//         target.classList.toggle("hidden")
+//       }, 650)
   
-    }
+//     }
   
-}
+// }
 
 class Trip extends React.Component {
     constructor(props) {
@@ -80,15 +80,15 @@ class Trip extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={ev => showDescription(ev)}>{this.props.trip.title} - {this.props.trip.date} -{this.props.trip.duration} - {this.props.trip.location}</button>
+              
                 <div>
                     <div>
                         
-                        {this.props.isEditingTrip ?
+                    {this.props.isEditingTrip ? 
                             (<i onClick={(ev) => this.submitEditedAdventure(ev)}></i>)
                             :
                                 (<div><i onClick={() => this.props.editingTrip()}></i>
-                                    <i onClick={() => this.deleteAdventure()}></i> </div>
+                                    <button onClick={() => this.deleteAdventure()}> Delete</button> </div>
                             
                                 )
                            
@@ -105,7 +105,18 @@ class Trip extends React.Component {
                                         value={this.state.trip.title}
                                         placeholder="Name of Trip"
                                     />
-                                </div>
+                                    </div>
+                                    <div>
+                                        <h4>Date: </h4>
+                                        <input onChange={ev => this.handleChanges(ev)}
+                                            id="username"
+                                            type="text"
+                                            name="date"
+                                            value={this.state.trip.date}
+                                            placeholder="date"
+                                            />
+
+                                    </div>
                                 <div>
                                     <h4>Location: </h4>
                                     <input onChange={ev => this.handleChanges(ev)}
@@ -196,6 +207,10 @@ class Trip extends React.Component {
                                     <div>
                                         <h4>Title: </h4>
                                         <p>{this.state.trip.title}</p>
+                                    </div>
+                                    <div>
+                                        <h4>Date: </h4>
+                                        <p>{this.state.trip.date}</p>
                                     </div>
                                     <div>
                                         <h4>Location: </h4>

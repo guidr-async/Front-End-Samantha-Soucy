@@ -6,7 +6,7 @@ import { getHomePage, getUsers, logOut } from "../actions";
 export class HomePageView extends Component {
 
     state = {
-        selected: "All"
+        selected: "All",
     }
     componentDidMount() {
         this.props.getHomePage()
@@ -16,18 +16,14 @@ export class HomePageView extends Component {
         console.log(ev.target.innerText)
         this.setState({selected: ev.target.innerText});
     }
-    // filterInfo = () => {
-    //     const filtered = this.props.adventures.filter(adventure => {
-    //         if (this.state.selected === "All") {
-    //             return this.props.adventures
-    //         }
-    //         else if (this.state.selected === adventure.adventure_type) {
-    //             return adventure
-    //         }
-    //     }
-    //     );
-    //     return (filtered)
-    // }
+    filterInfo = () => {
+        console.log('filteredInfo', this.props.adventures);
+          const filtered = this.props.adventures.filter(adventure => {
+              if (this.state.selected === "All") return adventure;
+              else if (this.state.selected === adventure.adventure_type) return adventure;
+            });
+          return (filtered)
+      }
 
     
 
@@ -40,7 +36,7 @@ export class HomePageView extends Component {
         return (
             <div>
                 <HomePage
-                    // adventures={this.filterInfo()}
+                    adventures={this.filterInfo()}
                     users={this.props.users}
                     logout={this.logout}
                     user={this.props.user}
@@ -59,6 +55,7 @@ const mapStateToProps = (state) => ({
     users: state.users,
     isLoggedIn: state.isLoggedIn,
     user: state.user
+    
     
 })
 

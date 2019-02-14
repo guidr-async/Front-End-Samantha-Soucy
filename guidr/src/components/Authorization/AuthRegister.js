@@ -47,7 +47,7 @@ class AuthRegister extends Component {
       professional: this.state.newUser.professional,
     }
     console.log(newUserOff)
-    axios.post(`https://guidr2.herokuapp.com/register`, newUserOff)
+    axios.post("https://guidr2.herokuapp.com/register", newUserOff)
       .then((res) => {
         if (res.status === 201) {
           this.setState({
@@ -185,10 +185,10 @@ class AuthRegister extends Component {
             </div>
           </div>
           <div>
-            <button onClick={e => this.submitHandler(e)} type="submit">
+            <button onClick={ev => this.submitHandler(ev)} type="submit">
               Submit
         </button>
-            <button onClick={e => this.props.clearForm(e)} type="button">
+            <button onClick={ev => this.props.clearForm(ev)} type="button">
               Cancel
         </button>
           </div>

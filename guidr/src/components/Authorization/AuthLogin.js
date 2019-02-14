@@ -26,8 +26,9 @@ class AuthLogin extends Component {
   }
 
     submitHandler = ev => {
+        this.setState({isLoading: true})
         ev.preventDefault();
-        axios.post(`https://guidr2.herokuapp.com/login`, this.state.user)
+        axios.post("https://guidr2.herokuapp.com/login", this.state.user)
             .then(resp => {
                 console.log("running token")
                 localStorage.setItem('token', resp.data.token)
@@ -84,7 +85,6 @@ class AuthLogin extends Component {
                       Password
                   </label>
                   <input
-                      required
                       autoComplete="on"
                       type="password"
                       id="password"

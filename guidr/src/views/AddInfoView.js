@@ -8,12 +8,12 @@ class AddInfoView extends Component{
         super(props);
         this.state = {
             newTrip: {
-                "user_id": this.props.user.id,
+                "user_id": 1,
                 "adventure_type": "",
                 "title": "",
                 "location": "",
                 "duration": "",
-                "descriptioon": "",
+                "description": "",
                 "professional": false,
                 "date": null
 
@@ -82,7 +82,7 @@ class AddInfoView extends Component{
         return (
             <div>
                 <AddInfo
-                    clearform={this.clearform}
+                    clearForm={this.clearForm}
                     handleChanges={this.handleChanges}
                     newTrip={this.state.newTrip}
                     submitAdventure={this.submitAdventure}

@@ -12,10 +12,10 @@ export default function InfoList(props) {
             {props.userAdventures.length === 0
                 ?
                 
-                (<div>
+                (<>
                     <h3>No Adventures Available</h3>
                     <Link to={"/addInfo"}> Add some Info</Link>
-                </div>
+                </>
                 )
                 : (props.userAdventures.map(trip =>
                     <Trip key={trip.id}
@@ -25,7 +25,7 @@ export default function InfoList(props) {
                         updateAdventure={props.updateAdventure}
                         trip={trip}
                         deleteTrip={props.deleteTrip}
-                        mainUserPage = {props.mainUserPage}
+                        
                     />))
                 }
         </div>
