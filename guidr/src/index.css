@@ -6,11 +6,316 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("./backgroundimg3.jpg");
-  background-size: cover; */
+  background-image: url("./backgroundimg3.jpg");
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.regForm{
+  align-content: center;
+  align-items: center; 
+  justify-content: space-around;
+  font-family: 'Butterfly Kids', cursive;
+  margin: 0 auto; 
+  width:280px;
+  height:425px;
+  background-color: rgb(80, 43, 43);
+  padding: 10px 0px 0px 4px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+ 
+}
+
+.regInput{
+  width: 250px;
+  height: 30px;
+  margin: 3px 0px 0px 10px;
+  border: 0px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.regButton{
+ width: 149px;
+ height: 42px;
+ background-color: orange;
+ -moz-border-radius: 10px;
+ -webkit-border-radius: 10px;
+ margin: 20px auto 0px auto;
+ text-align: center;
+ cursor: pointer;
+ clear: both;
+ font-weight: normal;
+ font-size: 28px;
+ font-family: "Impact";
+ line-height: 40px;
+ text-decoration: none;
+ color: white;
+}
+
+.addTripForm{
+  display: flex;
+  align-content: center;
+  align-items: center; 
+  justify-content: space-around;
+  font-family: 'Butterfly Kids', cursive;
+  margin: 0 auto; 
+  flex-direction: column;
+  border: 2px solid black;
+  align-content: center;
+  align-items: center; 
+  justify-content: space-around;
+  background-color: rgb(93, 129, 93);
+  width:400px;
+  height: 850px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  
+}
+.addInfoInput{
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: underline;
+  
+  
+}
+.tripForm{
+  
+    display: flex;
+    align-content: center;
+    align-items: center; 
+    font-family: 'Butterfly Kids', cursive; 
+    margin: 0 auto; 
+    flex-direction: column;
+    border: 2px solid black; 
+    align-content: center;
+    align-items: center; 
+    justify-content: space-around; 
+    background-color: rgb(93, 129, 93); 
+    width:300px; 
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;  
+} 
+
+.inputInfo{
+  
+  flex-direction: column;
+  display: flex;
+  width: 250px;
+  
+  margin: 0 auto;
+  border: 0px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid black;
+}
+.doneButt{
+  width: 149px;
+  height: 42px;
+  background-color: orange;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin: 5px auto 0px auto;
+  text-align: center;
+  cursor: pointer;
+  clear: both;
+  font-weight: normal;
+  font-size: 28px;
+  font-family: "Impact";
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+}
+.submitButton{
+  width: 149px;
+  height: 42px;
+  background-color: orange;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin: 5px auto 0px auto;
+  text-align: center;
+  cursor: pointer;
+  clear: both;
+  font-weight: normal;
+  font-size: 28px;
+  font-family: "Impact";
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+}
+
+.profilePage{
+  display: flex;
+  align-content: center;
+  align-items: center; 
+  font-family: 'Butterfly Kids', cursive; 
+  margin: 15px auto; 
+   flex-direction: column;
+   border: 2px solid black; 
+   align-content: center;
+  align-items: center; 
+  justify-content: space-around; 
+  background-color: rgb(93, 129, 93); 
+  width:300px; 
+  text-decoration: underline;
+  
+  background-color: rgb(93, 129, 93);
+  -moz-border-radius: 15px;
+   -webkit-border-radius: 15px;  
+}
+.profilePage1{
+  display: flex;
+  align-content: center;
+  align-items: center; 
+  font-family: 'Butterfly Kids', cursive; 
+  margin: 15px auto; 
+   flex-direction: column;
+   border: 2px solid black; 
+   align-content: center;
+  align-items: center; 
+  justify-content: space-around; 
+  background-color: rgb(93, 129, 93); 
+  width:300px; 
+  text-decoration: underline;
+  
+  background-color: rgb(93, 129, 93);
+  -moz-border-radius: 15px;
+   -webkit-border-radius: 15px;  
+}
+.updateButt{
+  width: 149px;
+  height: 42px;
+  background-color: orange;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin: 5px auto 0px auto;
+  text-align: center;
+  cursor: pointer;
+  clear: both;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: "Impact";
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+}
+.delete{
+  width: 149px;
+  height: 42px;
+  background-color: orange;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin: 5px auto 0px auto;
+  text-align: center;
+  cursor: pointer;
+  clear: both;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: "Impact";
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+}
+
+h1{
+  font-size: 40px;
+  font-family: 'Butterfly Kids', cursive;
+}
+h4{
+  font-size: 30px;
+  font-family: 'Butterfly Kids', cursive;
+}
+
+img{
+  width: 20%;
+}
+
+.all{
+  width: 100%;
+  display: flex;
+  /* justify-content: none; */
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: bold;
+  text-decoration: underline;
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 20px;
+  cursor: pointer;
+  
+}
+
+.allCards{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: none;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  /* font-weight: bold; */
+  
+}
+
+.cards{
+  /* display: flex; */
+  /* justify-content: space-around; */
+  width: 20%;
+  flex-direction: column;
+  margin: 25px;
+  background-color: rgb(245, 240, 240);
+  border: 2px solid black;
+}
+
+.nav{
+  font-size: 20px;
+ }
+
+.profileLink{
+  color: black;
+  margin-right: 5%;
+}
+
+.logoutLink{
+  color: black;
+}
+
+.homePageLink{
+  color: black;
+  margin-right: 5%;
+  font-size: 20px;
+}
+.addInfoLink{
+  color: black;
+  margin-right: 5%;
+  font-size: 20px;
+}
+.logoutLink{
+  color: black;
+  font-size: 20px;
+}
+
+.addSomeInfoLink{
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.heading{
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+.heading1{
+  font-size: 20px;
+  text-decoration: underline;
+  
 }

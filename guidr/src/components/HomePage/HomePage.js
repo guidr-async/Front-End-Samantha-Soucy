@@ -7,24 +7,26 @@ export default function HomePage(props) {
     return (
         <div>
             <header>
-                <nav>
-                    <Link to={`/user/${props.user.id}`}>Profile</Link>
-                    <Link onClick={() => props.logout()} to={"/"}>Logout</Link>
+                <nav className= "nav">
+                    <Link className="profileLink" to={`/user/${props.user.id}`}>Profile</Link>
+                    <Link className="logoutLink" onClick={() => props.logout()} to={"/"}>Logout</Link>
                 </nav>
-                <div>
-                {/* <img src={""} alt="" /> */}
-                </div>
+                
             </header>
-            <div className="filter">
+            <div >
                 <h4>Trip Type:</h4>
-                <div onClick={ev => props.changeSelected(ev)} className="All">All</div>
-                <div onClick={ev => props.changeSelected(ev)} className="All">Hiking</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="All">Back Packing</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="All">Rock Climbing</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="All">Cycling</div>
-                <div onClick={ev =>props.changeSelected(ev)} className="All">Scuba Diving</div>
             </div>
-            <section>
+            <div className="all">
+                
+                <div onClick={ev => props.changeSelected(ev)}>All</div>
+                <div onClick={ev => props.changeSelected(ev)} >Hiking</div>
+                <div onClick={ev =>props.changeSelected(ev)} >Back Packing</div>
+                <div onClick={ev =>props.changeSelected(ev)} >Rock Climbing</div>
+                <div onClick={ev =>props.changeSelected(ev)} >Cycling</div>
+                <div onClick={ev => props.changeSelected(ev)} >Scuba Diving</div>
+                
+            </div>
+            <section className="allCards">
             {props.adventures.map(item => {return <InfoCard key={item.id} user={props.users.find(user=> user.id === item.user_id )} adventure={item} />})}
             </section>
         </div>

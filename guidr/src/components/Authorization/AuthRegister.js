@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Logo from "../../images/img1.png"
 
 
 const initialUser = {
@@ -67,18 +68,18 @@ class AuthRegister extends Component {
   render() {
     return (
       <>
-        <form autoComplete="on" onSubmit={this.submitHandler}>
-          <h1>Sign Up</h1>
+        <form  autoComplete="on" onSubmit={this.submitHandler}>
+          <h1>Sign Up <br/> For</h1>
           <div>
-          
+          <img src={Logo} alt=""/>
           </div>
-          <div>
+          <div className="regForm">
             <div>
                 <div>
                 <label htmlFor="username">
                 Username
               </label>
-                <input
+                <input className="regInput"
                   type='text'
                   id='username'
                   name='username'
@@ -92,7 +93,7 @@ class AuthRegister extends Component {
                 <label htmlFor="username">
                 Email
               </label>
-                <input
+                <input className="regInput"
                   id="email"
                   type="email"
                   name="email"
@@ -107,7 +108,7 @@ class AuthRegister extends Component {
                 <label htmlFor="username">
                 Password
                 </label>
-                <input
+                <input className="regInput"
                   id="password"
                   type="password"
                   name="password"
@@ -122,7 +123,7 @@ class AuthRegister extends Component {
                 <label htmlFor="username">
                 Retype Password
                 </label>
-                <input
+                <input className="regInput"
                   id="password2"
                   type="password"
                   name="password2"
@@ -139,7 +140,7 @@ class AuthRegister extends Component {
                 <label htmlFor="username">
                 Full Name
                 </label>
-                <input
+                <input className="regInput"
                   id="name"
                   name="name"
                   placeholder="Full Name"
@@ -153,7 +154,7 @@ class AuthRegister extends Component {
                 <label htmlFor="username">
                 Location
                 </label>
-                <input
+                <input className="regInput"
                   id="location"
                   name="location"
                   placeholder="Location"
@@ -167,7 +168,7 @@ class AuthRegister extends Component {
                 <label htmlFor="username">
                 Bio
                 </label>
-                <textarea
+                <textarea className="regInput"
                   id="bio"
                   type="text"
                   name="bio"
@@ -179,16 +180,16 @@ class AuthRegister extends Component {
                   />
                 <label htmlFor="text">
                   Professional?
-                  <input onChange={this.inputHandler} value={this.state.newUser.professional} id="professional" type="checkbox" name="professional" placeholder="Professional" />
+                  <input className="regInput" onChange={this.inputHandler} value={this.state.newUser.professional} id="professional" type="checkbox" name="professional" placeholder="Professional" />
                 </label>
               </div>
             </div>
           </div>
           <div>
-            <button onClick={ev => this.submitHandler(ev)} type="submit">
+            <button className="regButton" hover onClick={ev => this.submitHandler(ev)} type="submit" >
               Submit
         </button>
-            <button onClick={ev => this.props.clearForm(ev)} type="button">
+            <button className="regButton" onClick={ev => this.props.clearForm(ev)} type="button">
               Cancel
         </button>
           </div>

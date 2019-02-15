@@ -7,14 +7,14 @@ import {Link} from "react-router-dom"
 export default function InfoList(props) {
     console.log(props)
     return (
-        <div>
+        <div className="profilePage1">
             <h2>{props.user.name}'s Trips</h2>
             {props.userAdventures.length === 0
                 ?
                 
                 (<>
-                    <h3>No Adventures Available</h3>
-                    <Link to={"/addInfo"}> Add some Info</Link>
+                    <h3>No Adventures Available!</h3>
+                    <Link className="addInfoInput" to={"/addInfo"}> Add Some Trip Info</Link>
                 </>
                 )
                 : (props.userAdventures.map(trip =>

@@ -37,9 +37,6 @@ import {
     ADD_ADVENTURE_START,
     ADD_ADVENTURE_SUCCESS,
     ADD_ADVENTURE_FAILURE,
-
-    // TRANSITION_START,
-    // TRANSITION_END
 } from "../actions"
 
 const initialState = {
@@ -99,7 +96,6 @@ export default (state = initialState, { type, payload }) => {
             };
         case FETCH_USERS_SUCCESS:
             console.log("fet_users", payload)
-            // const loadedUsers = payload.map(user => { return { name: user.name, username: user.username, id: user.id, location: user.location, bio: user.bio, professional: user.professional, email: user.email } });
             localStorage.setItem("users", JSON.stringify(payload))
             return {
                 ...state,

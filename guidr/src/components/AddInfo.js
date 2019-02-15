@@ -3,13 +3,13 @@ import React from "react";
 const AddInfo = props => {
     return (
         <div>
-            <form onSubmit={ev => props.submitAdventure(ev)}>
-                <h1>Add Trip Information!</h1>
+            <h1>Add Trip Information!</h1>
+            <form className="addTripForm" onSubmit={ev => props.submitAdventure(ev)}>
                 <div>
-                    <label htmlFor="username">
+                    <label className="heading" htmlFor="username"><strong>
                         Title
-                    </label>
-                    <input onChange={ev => props.handleChanges(ev)}
+                    </strong></label>
+                    <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         id="username"
                         type="text"
                         name="title"
@@ -17,19 +17,20 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="username">
+                    <label className="heading" htmlFor="username"><strong>
                         Date
-                    </label>
-                    <input onChange={ev => props.handleChanges(ev)}
+                    </strong></label>
+                    <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         type="text"
                         name="date"
+                        placeholder="Date"
                     />
                 </div>
                 <div>
-                    <label htmlFor="username">
+                    <label className="heading" htmlFor="username"><strong>
                         Location
-                    </label>
-                    <input onChange={ev => props.handleChanges(ev)}
+                    </strong></label>
+                    <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         id="username"
                         type="text"
                         name="location"
@@ -37,10 +38,10 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="username">
+                    <label className="heading" htmlFor="username"><strong>
                         Duration
-                    </label>
-                    <input onChange={ev => props.handleChanges(ev)}
+                        </strong></label>
+                    <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         id="username"
                         type="text"
                         name="duration"
@@ -48,90 +49,92 @@ const AddInfo = props => {
                     />
                 </div>
                 <div>
-                <label htmlFor="username">
-                    type
-                </label>
+                <label className="heading1" htmlFor="username"><strong>
+                    Type
+                    </strong></label>
                 <div>
-                <input onChange={ev => props.handleChanges(ev)}
+                <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="adventure_type"
                         value="back packing"
+                           
+                            
                     />
-                    <label>
+                    <label className="heading"><strong>
                         Back Packing
-                    </label>
+                        </strong></label>
                 </div>
                 <div>
-                <input onChange={ev => props.handleChanges(ev)}
+                <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="adventure_type"
                         value="Hiking"
                     />
-                    <label>
+                    <label className="heading"><strong>
                         Hiking
-                    </label>
+                    </strong></label>
                 </div>
                 <div>
-                <input onChange={ev => props.handleChanges(ev)}
+                <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="adventure_type"
                         value="White water rafting"
                     />
-                    <label>
+                    <label className="heading"><strong>
                         Cycling
-                    </label>
+                    </strong></label>
                 </div>
                 <div>
-                <input onChange={ev => props.handleChanges(ev)}
+                <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="adventure_type"
                         value="Rock Climbing"
                     />
-                    <label>
+                    <label className="heading"><strong>
                         Climbing
-                    </label>
+                    </strong></label>
                 </div>
                 <div>
-                <input onChange={ev => props.handleChanges(ev)}
+                <input className="addInfoInput" onChange={ev => props.handleChanges(ev)}
                         type="radio"
                         name="adventure_type"
                         value="Diving"
                     />
-                    <label>
+                    <label className="heading"><strong>
                         Diving
-                    </label>
+                    </strong></label>
                 </div>
                 </div>
                     <div>
-                        <label htmlFor="username">
+                        <label className="heading"  htmlFor="username"><strong>
                             Professional or Pleasure
-                        </label>
+                        </strong></label>
                         <div>
-                            <input
+                            <input className="addInfoInput"
                                 type="radio"
                                 name="professional"
                                 value="professional"
                                 onChange={ev => props.handleChanges(ev)}
                             />
-                            <label>
+                            <label className="heading"><strong>
                                 Professional
-                            </label><br />
-                            <input
+                            </strong></label><br />
+                            <input className="addInfoInput"
                                 type="radio"
                                 name="professional"
                                 value="personal"
                                 onChange={ev => props.handleChanges(ev)}
                             />
-                            <label>
+                            <label className="heading"><strong>
                                 Pleasure
-                            </label>
+                            </strong></label>
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="username">
+                        <label className="heading" htmlFor="username"><strong>
                             Drscription/Notes
-                        </label>
-                        <textarea rows="5"
+                        </strong></label>
+                        <textarea className="addInfoInput" rows="5"
                             id="username"
                             type="text"
                             name="description"
@@ -141,9 +144,9 @@ const AddInfo = props => {
                             />
                     </div>
                     <div>
-                        <button type="submit">Submit</button>
+                        <button className="submitButton" type="submit">Submit</button>
                     
-                        <button onClick={ev=> props.clearForm(ev)} type="button">Clear</button>
+                        <button className="submitButton" onClick={ev=> props.clearForm(ev)} type="button">Clear</button>
                     </div>
             </form>
         </div>

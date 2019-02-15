@@ -78,9 +78,9 @@ class Trip extends React.Component {
                             (<i onClick={(ev) => this.submitEditedAdventure(ev)}></i>)
                             :
                             <div>
-                                <button onClick={() => this.props.editingTrip()}>Update</button>
+                                <button className= "updateButt" onClick={() => this.props.editingTrip()}>Update</button>
                                 
-                                <button onClick={() => this.deleteAdventure()}> Delete</button>
+                                <button className="delete" onClick={() => this.deleteAdventure()}> Delete</button>
                             </div>
                             
                             
@@ -89,11 +89,11 @@ class Trip extends React.Component {
                         }
                         {this.props.isEditingTrip ?
                             (<>
-                                <form onSubmit={ev => this.submitEditedAdventure(ev)}>
-                                <button onClick={(ev) => this.props.doneEditing(ev, this.state.trip.id, this.state.trip)}>Done</button>
+                                <form className="tripForm" onSubmit={ev => this.submitEditedAdventure(ev)}>
+                                
                                 <div>
                                     <h4>Title: </h4>
-                                    <input onChange={ev => this.handleChanges(ev)}
+                                    <input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
                                         name="title"
@@ -103,7 +103,7 @@ class Trip extends React.Component {
                                     </div>
                                     <div>
                                         <h4>Date: </h4>
-                                        <input onChange={ev => this.handleChanges(ev)}
+                                        <input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                             id="username"
                                             type="text"
                                             name="date"
@@ -114,7 +114,7 @@ class Trip extends React.Component {
                                     </div>
                                 <div>
                                     <h4>Location: </h4>
-                                    <input onChange={ev => this.handleChanges(ev)}
+                                    <input  className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
                                         name="location"
@@ -124,7 +124,7 @@ class Trip extends React.Component {
                                 </div>
                                 <div>
                                     <h4>Duration: </h4>
-                                    <input onChange={ev => this.handleChanges(ev)}
+                                    <input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
                                         name="duration"
@@ -135,7 +135,7 @@ class Trip extends React.Component {
                                 <div>
                                     <h4>Type of trip: </h4>
                                     <div>
-                                        <input onChange={ev => this.handleChanges(ev)}
+                                        <input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         type="radio"
                                         name="adventure_type"
                                         value="Back Packing" />
@@ -143,7 +143,7 @@ class Trip extends React.Component {
                                     </div>
 
                                     <div>
-                                        <input onChange={ev => this.handleChanges(ev)}
+                                        <input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         type="radio"
                                         name="adventure_type"
                                         value="Hiking" />
@@ -151,21 +151,21 @@ class Trip extends React.Component {
                                     </div>
                                 
                                     <div>
-                                        <input onChange={ev => this.handleChanges(ev)}
+                                        <input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         type="radio"
                                         name="adventure_type"
                                         value="white water rafting" />
                                         <label>white water rafting</label>
                                     </div>
 
-                                    <div><input onChange={ev => this.handleChanges(ev)}
+                                    <div><input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         type="radio"
                                         name="adventure_type"
                                         value="Rock Climbing" />
                                         <label>Rock Climbing</label>
                                     </div>
 
-                                    <div><input onChange={ev => this.handleChanges(ev)}
+                                    <div><input className="inputInfo" onChange={ev => this.handleChanges(ev)}
                                         type="radio"
                                         name="adventure_type"
                                         value="Diving" />
@@ -176,16 +176,16 @@ class Trip extends React.Component {
                                 <div>
                                     <h4>Professional or Pleasure: </h4>
                                     <div>
-                                        <input type="radio" name="professional" value="professional"
+                                        <input className="inputInfo" type="radio" name="professional" value="professional"
                                             onChange={ev => this.handleChanges(ev)} />
                                         <label>Professional</label><br />
-                                        <input type="radio" name="professional" value="personal"
+                                        <input className="inputInfo" type="radio" name="professional" value="personal"
                                             onChange={ev => this.handleChanges(ev)} />
                                         <label>Pleasure</label>
                                     </div>
                                 </div>
                                 <div>
-                                    <h4>Notes: <textarea cols="100" rows="5" onChange={ev => this.handleChanges(ev)}
+                                    <h4>Notes: <textarea className="inputInfo" cols="100" rows="5" onChange={ev => this.handleChanges(ev)}
                                         id="username"
                                         type="text"
                                         name="description"
@@ -193,7 +193,8 @@ class Trip extends React.Component {
                                         spellCheck="true"
                                         placeholder="About You"
                                     /></h4>
-                                        </div>
+                                    </div>
+                                    <button className="doneButt" onClick={(ev) => this.props.doneEditing(ev, this.state.trip.id, this.state.trip)}>Done</button>
                                         </form>
                             </>)
                             :
@@ -221,7 +222,7 @@ class Trip extends React.Component {
                                     </div>
                                     <div>
                                         <h4> Professional or Pleasure:</h4>
-                                        <p>{this.state.trip.professional ? "Professional" : "Pleasure"}</p>
+                                        <p><strong>{this.state.trip.professional ? "Professional" : "Pleasure"}</strong></p>
                                     </div>
                                     <div>
                                         <h4> Notes: {this.state.trip.description}</h4>
