@@ -3,78 +3,20 @@ import { Link } from "react-router-dom";
 import InfoList from "./InfoList";
 
 export default function UserProfile(props) {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         profile: {
-    //             name: '',
-    //             email: '',
-    //             location: '',
-    //             bio: '',
-    //         },
-            // mainUserPage: false,
-            // pageUser: "",
-            // pageUserAdventures: [],
-            // id: this.props.match.params.id
-    //     }
-    // }
-
-    // componentDidMount(){
-    //     this.setState({profile: {
-    //       name: this.props.user.name,
-    //       email: this.props.user.email,
-    //       location: this.props.user.location,
-    //       bio: this.props.user.bio,
-    
-    //     } })
-    //   }
-    // handleChanges = ev => {
-    //     this.setState({
-    //         profile: ({
-    //             ...this.state.profile,
-    //             [ev.target.name]: ev.target.value
-    //         })
-    //     })
-    // }
-    // toggleMain = () => {
-    //     this.state.mainUserPage = true
-    // }
-
-    // submitEditedProfile = ev => {
-    //     ev.preventDefault()
-    //     this.props.doneEditing()
-    //     this.props.updateUser(this.props.user.id, this.state.pageUser);
-    //     this.props.getUserAdventure(this.state.pageUser.id)
-    // }
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.location.key !== this.props.location.key) {
-    //         this.setState({
-    //             pageUser: {
-    //                 ...this.props.user
-    //             }
-    //         })
-    //         this.props.getUserAdventure(this.props.user.id)
-    //     }
-    // }
-    // render() {
-
-        return (
+   return (
             <>
                 <div>
                     <nav>
-                        <Link to={"/homePage"}>Trip page</Link>
-                        {/* { {this.state.mainUserPage ?  */}
-                        <Link to={"/addInfo"}>Add Trip</Link> 
-                         {/* : <Link onClick={()=>this.toggleMain()} to={`/user/${this.props.user.id}`}>Profile</Link>}  */}
-                        <Link onClick={ev => props.logout(ev)} to={"/"}>Logout</Link>
+                        <Link className="homePageLink" to={"/homePage"}>Trip page</Link>
+                       
+                        <Link className="addInfoLink" to={"/addInfo"}>Add Trip</Link> 
+                        
+                        <Link className="logoutLink" onClick={ev => props.logout(ev)} to={"/"}>Logout</Link>
                     </nav>
                     <div>
-                        <div>
-                            {/* <img src={""} alt="" /> */}
-                        </div>
-                    
-                        <div>
-                            <div>
+                        
+                    <div>
+                            <div className="profilePage">
                                 
                             {props.isEditingProfile ? 
                                         (<i onClick={() => props.doneEditing()}></i>)
@@ -87,14 +29,14 @@ export default function UserProfile(props) {
                                         (
                                             <>
                                                 
-                                                <div>
+                                                <div >
                                                     <h4>Name: </h4>
                                                     <input onChange={ev => this.handleChanges(ev)}
                                                         id="username"
                                                         type="text"
                                                         name="name"
                                                         placeholder="Your Name"
-                                                        // value={this.state.pageUser.name}
+                                                       
                                                     />
                                                 </div>
                                                 <div>
@@ -104,7 +46,7 @@ export default function UserProfile(props) {
                                                         type="text"
                                                         name="email"
                                                         placeholder="Email"
-                                                        // value={this.state.pageUser.email}
+                                                        
                                                     />
                                                 </div>
                                                 <div>
@@ -114,7 +56,7 @@ export default function UserProfile(props) {
                                                         type="text"
                                                         name="location"
                                                         placeholder="Where were you"
-                                                        // value={this.state.pageUser.location}
+                                                        
                                                     />
                                                 </div>
                                                 <div>
@@ -122,7 +64,6 @@ export default function UserProfile(props) {
                                                 <textarea rows="5" cols="100" onChange={ev => props.handleChanges(ev)}
                                                             id="username"
                                                             type="text"
-                                                            // value={this.state.pageUser.bio}
                                                             name="bio"
                                                             spellCheck="true"
                                                             placeholder="About You"
@@ -169,7 +110,7 @@ export default function UserProfile(props) {
                         user={props.user}
                         userAdventures={props.userAdventures}
                         doneEditing={props.doneEditing}
-                        // isEditingTrip={this.props.isEditingTrip}
+                        isEditingTrip={props.isEditingTrip}
                         editingTrip={props.editingTrip}
                         deleteTrip ={props.deleteTrip}
                     />
@@ -179,7 +120,7 @@ export default function UserProfile(props) {
     }
 
 
-// export default UserProfile;
+
 
 
 

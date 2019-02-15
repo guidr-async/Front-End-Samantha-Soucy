@@ -66,7 +66,7 @@ class AuthLogin extends Component {
   render() {
       return (
 
-          <form onSubmit={this.submitHandler} autoComplete="on" >
+          <form className="loginForm" onSubmit={this.submitHandler} autoComplete="on" >
               <div >
                   <label htmlFor="username">
                       Username
@@ -95,9 +95,9 @@ class AuthLogin extends Component {
                   />
               </div>
               <div >
-                  <button type="submit">
+                  <button className="loginButton" type="submit">
                       Sign In
-                  </button>
+                  </button >
                   <Link to={"/signUp"} href="#">
                       Need to Register?
                   </Link>
