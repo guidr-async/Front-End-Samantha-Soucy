@@ -136,10 +136,8 @@ const AddInfo = props => {
                             type="text"
                             name="description"
                             spellCheck="true"
-                            value="notes"
                             onChange={ev => props.handleChanges(ev)}
                             placeholder="Additional Info"
-                            
                             />
                     </div>
                     <div>

@@ -90,7 +90,7 @@ class Trip extends React.Component {
                         {this.props.isEditingTrip ?
                             (<>
                                 <form onSubmit={ev => this.submitEditedAdventure(ev)}>
-                                <button onClick={() => this.props.doneEditing()}>Done</button>
+                                <button onClick={(ev) => this.props.doneEditing(ev, this.state.trip.id, this.state.trip)}>Done</button>
                                 <div>
                                     <h4>Title: </h4>
                                     <input onChange={ev => this.handleChanges(ev)}
@@ -224,7 +224,7 @@ class Trip extends React.Component {
                                         <p>{this.state.trip.professional ? "Professional" : "Pleasure"}</p>
                                     </div>
                                     <div>
-                                        <h4> Notes: {this.state.trip.decription}</h4>
+                                        <h4> Notes: {this.state.trip.description}</h4>
                                     </div>
                                 </>)
                         }

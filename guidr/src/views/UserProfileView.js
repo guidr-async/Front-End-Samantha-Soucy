@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import UserProfile from "../components/UserProfile/UserProfile";
 import { logOut, updateAdventure, deleteTrip, updateUser, getUsers, getHomePage, getUserAdventure } from "../actions";
+import axios from 'axios';
 
 export class UserProfileView extends Component {
     state = {
@@ -19,9 +20,13 @@ export class UserProfileView extends Component {
     editingTrip = () => {
         this.setState({isEditingTrip: true})
     }
-    doneEditing = () => {
-        console.log("click Done")
-        this.setState({ isEditingProfile: false, isEditingTrip: false })
+    doneEditing = (e, id, updatedTrip) => {
+        e.preventDefault();
+        console.log("doneEditing, updated Adventure", id, updatedTrip);
+      axios.put(`https://guidr2.herokuapp.com/adventures/${id}`, updatedTrip)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+      this.setState({ isEditingProfile: false, isEditingTrip: false })
     }
 
     logout = () => {
