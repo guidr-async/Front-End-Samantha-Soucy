@@ -83,10 +83,7 @@ class Trip extends React.Component {
                                 <button className="delete" onClick={() => this.deleteAdventure()}> Delete</button>
                             </div>
                             
-                            
-                                
-                           
-                        }
+                    }
                         {this.props.isEditingTrip ?
                             (<>
                                 <form className="tripForm" onSubmit={ev => this.submitEditedAdventure(ev)}>

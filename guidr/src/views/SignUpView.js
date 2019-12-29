@@ -47,7 +47,7 @@ export class SignUpView extends Component{
             this.props.addUser(newUserLocal)
             this.props.error ? alert(this.props.error) : this.clearForm(ev);
         } else {
-            alert("Passwords do not match.")
+            alert("Passwords do not match. please Try again")
         }
         this.props.getUsers();
     }
