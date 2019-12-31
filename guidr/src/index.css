@@ -85,8 +85,6 @@ code {
   font-weight: bold;
   font-size: 18px;
   text-decoration: underline;
-  
-  
 }
 .tripForm{
   
@@ -111,7 +109,6 @@ code {
   flex-direction: column;
   display: flex;
   width: 250px;
-  
   margin: 0 auto;
   border: 0px;
   font-weight: bold;
@@ -159,9 +156,9 @@ code {
   align-items: center; 
   font-family: 'Butterfly Kids', cursive; 
   margin: 15px auto; 
-   flex-direction: column;
-   border: 2px solid black; 
-   align-content: center;
+  flex-direction: column;
+  border: 2px solid black; 
+  align-content: center;
   align-items: center; 
   justify-content: space-around; 
   background-color: rgb(93, 129, 93); 
@@ -178,9 +175,9 @@ code {
   align-items: center; 
   font-family: 'Butterfly Kids', cursive; 
   margin: 15px auto; 
-   flex-direction: column;
-   border: 2px solid black; 
-   align-content: center;
+  flex-direction: column;
+  border: 2px solid black; 
+  align-content: center;
   align-items: center; 
   justify-content: space-around; 
   background-color: rgb(93, 129, 93); 
@@ -242,7 +239,6 @@ img{
 .all{
   width: 100%;
   display: flex;
-  /* justify-content: none; */
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
@@ -251,7 +247,6 @@ img{
   font-family: 'Butterfly Kids', cursive;
   font-size: 20px;
   cursor: pointer;
-  
 }
 
 .allCards{
@@ -262,13 +257,9 @@ img{
   width: 100%;
   margin-top: 60px;
   flex-wrap: wrap;
-  /* font-weight: bold; */
-  
 }
 
 .cards{
-  /* display: flex; */
-  /* justify-content: space-around; */
   width: 20%;
   flex-direction: column;
   margin: 25px;
