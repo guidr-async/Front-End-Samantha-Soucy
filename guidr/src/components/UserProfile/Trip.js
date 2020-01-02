@@ -105,7 +105,7 @@ class Trip extends React.Component {
                                             type="text"
                                             name="date"
                                             value={this.state.trip.date}
-                                            placeholder="date"
+                                            placeholder="date of Trip"
                                             />
 
                                     </div>
@@ -210,7 +210,7 @@ class Trip extends React.Component {
                                         <p>{this.state.trip.location}</p>
                                     </div>
                                     <div>
-                                        <h4>Duraction: </h4>
+                                        <h4>Duration: </h4>
                                         <p>{this.state.trip.duration}</p>
                                     </div>
                                     <div>

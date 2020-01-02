@@ -57,8 +57,6 @@ const AddInfo = props => {
                         type="radio"
                         name="adventure_type"
                         value="back packing"
-                           
-                            
                     />
                     <label className="heading"><strong>
                         Back Packing
@@ -145,7 +143,6 @@ const AddInfo = props => {
                     </div>
                     <div>
                         <button className="submitButton" type="submit">Submit</button>
-                    
                         <button className="submitButton" onClick={ev=> props.clearForm(ev)} type="button">Clear</button>
                     </div>
             </form>

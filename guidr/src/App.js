@@ -19,7 +19,6 @@ class App extends Component {
         <Route exact path="/user" component={UserProfileView} />
         <Route path="/user/:id" component={UserProfileView} />
         <Route path="/addInfo" component={AddInfoView} />
-        
       </div>
     );
   }
