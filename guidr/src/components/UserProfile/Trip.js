@@ -126,7 +126,7 @@ class Trip extends React.Component {
                                         type="text"
                                         name="duration"
                                         value={this.state.trip.duraction}
-                                        placeholder="How Long Was your Trip"
+                                        placeholder="Length of Trip"
                                     />
                                 </div>
                                 <div>
@@ -188,7 +188,7 @@ class Trip extends React.Component {
                                         name="description"
                                         value={this.state.trip.description}
                                         spellCheck="true"
-                                        placeholder="About You"
+                                        placeholder="About Trip"
                                     /></h4>
                                     </div>
                                     <button className="doneButt" onClick={(ev) => this.props.doneEditing(ev, this.state.trip.id, this.state.trip)}>Done</button>
